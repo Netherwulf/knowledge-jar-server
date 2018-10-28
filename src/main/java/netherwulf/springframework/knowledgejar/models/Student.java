@@ -1,4 +1,4 @@
-package netherwulf.springframework.knowledgejar.domain;
+package netherwulf.springframework.knowledgejar.models;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -26,7 +26,7 @@ public class Student {
     private Set<Chapter> chapters = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
-    private Set<Answer> answers = new HashSet<Answer>();
+    private Set<Answer> answers = new HashSet<>();
 
     public Long getId() {
         return id;

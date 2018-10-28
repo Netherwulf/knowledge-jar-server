@@ -10,19 +10,16 @@ import java.util.Set;
 
 @Data
 @NoArgsConstructor
-public class ChapterDTO {
+public class StatementDTO {
     private Long id;
 
     @NotBlank
     @Size(max = 30)
-    private String name;
+    private String content;
 
     @NotBlank
-    @Size(max = 100)
-    private String description;
+    private Boolean isCorrect;
 
-    private Set<StudentDTO> students = new HashSet<>();
-    private Set<SubchapterDTO> subchapters = new HashSet<>();
-
-    private QuizDTO quiz;
+    private Set<AnswerDTO> answers = new HashSet<>();
+    private ClosedQuestionDTO closedQuestion;
 }

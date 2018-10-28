@@ -5,12 +5,10 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.HashSet;
-import java.util.Set;
 
 @Data
 @NoArgsConstructor
-public class ChapterDTO {
+public class SubchapterDTO {
     private Long id;
 
     @NotBlank
@@ -18,11 +16,14 @@ public class ChapterDTO {
     private String name;
 
     @NotBlank
-    @Size(max = 100)
-    private String description;
+    @Size(max = 200)
+    private String content;
 
-    private Set<StudentDTO> students = new HashSet<>();
-    private Set<SubchapterDTO> subchapters = new HashSet<>();
+    @NotBlank
+    @Size(max = 50)
+    private String codeLink;
 
-    private QuizDTO quiz;
+    private ChapterDTO chapter;
+    private OpenQuestionDTO openQuestion;
+    private ClosedQuestionDTO closedQuestion;
 }

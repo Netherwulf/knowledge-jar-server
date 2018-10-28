@@ -1,4 +1,4 @@
-package netherwulf.springframework.knowledgejar.domain;
+package netherwulf.springframework.knowledgejar.models;
 
 import javax.persistence.*;
 

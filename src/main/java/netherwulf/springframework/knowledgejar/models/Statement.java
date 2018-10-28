@@ -1,27 +1,24 @@
-package netherwulf.springframework.knowledgejar.domain;
+package netherwulf.springframework.knowledgejar.models;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class OpenQuestion {
+public class Statement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String content;
-    private String correctAnswer;
+    private Boolean isCorrect;
 
-    @OneToOne
-    private Subchapter subchapter;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "openQuestion")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "statement")
     private Set<Answer> answers = new HashSet<>();
 
     @ManyToOne
-    private Quiz quiz;
+    private ClosedQuestion closedQuestion;
 
     public Long getId() {
         return id;
@@ -39,20 +36,12 @@ public class OpenQuestion {
         this.content = content;
     }
 
-    public String getCorrectAnswer() {
-        return correctAnswer;
+    public Boolean getCorrect() {
+        return isCorrect;
     }
 
-    public void setCorrectAnswer(String correctAnswer) {
-        this.correctAnswer = correctAnswer;
-    }
-
-    public Subchapter getSubchapter() {
-        return subchapter;
-    }
-
-    public void setSubchapter(Subchapter subchapter) {
-        this.subchapter = subchapter;
+    public void setCorrect(Boolean correct) {
+        isCorrect = correct;
     }
 
     public Set<Answer> getAnswers() {
@@ -63,11 +52,11 @@ public class OpenQuestion {
         this.answers = answers;
     }
 
-    public Quiz getQuiz() {
-        return quiz;
+    public ClosedQuestion getClosedQuestion() {
+        return closedQuestion;
     }
 
-    public void setQuiz(Quiz quiz) {
-        this.quiz = quiz;
+    public void setClosedQuestion(ClosedQuestion closedQuestion) {
+        this.closedQuestion = closedQuestion;
     }
 }
