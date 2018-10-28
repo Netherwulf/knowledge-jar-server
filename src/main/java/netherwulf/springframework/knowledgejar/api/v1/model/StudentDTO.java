@@ -39,6 +39,8 @@ public class StudentDTO {
     @Size(max = 30)
     private String joinDate;
 
+    private String studentUrl;
+
     private Set<ChapterDTO> chapters = new HashSet<>();
     private Set<AnswerDTO> answers = new HashSet<>();
 }

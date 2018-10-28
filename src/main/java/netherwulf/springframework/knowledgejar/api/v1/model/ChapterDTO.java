@@ -21,6 +21,8 @@ public class ChapterDTO {
     @Size(max = 100)
     private String description;
 
+    private String chapterUrl;
+
     private Set<StudentDTO> students = new HashSet<>();
     private Set<SubchapterDTO> subchapters = new HashSet<>();
 

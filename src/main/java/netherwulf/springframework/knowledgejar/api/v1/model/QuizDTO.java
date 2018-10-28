@@ -17,6 +17,8 @@ public class QuizDTO {
     @Size(max = 30)
     private String name;
 
+    private String quizUrl;
+
     private ChapterDTO chapter;
     private Set<OpenQuestionDTO> openQuestions = new HashSet<>();
     private Set<ClosedQuestionDTO> closedQuestions = new HashSet<>();

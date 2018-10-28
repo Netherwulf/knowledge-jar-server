@@ -20,6 +20,8 @@ public class StatementDTO {
     @NotBlank
     private Boolean isCorrect;
 
+    private String statementUrl;
+
     private Set<AnswerDTO> answers = new HashSet<>();
     private ClosedQuestionDTO closedQuestion;
 }

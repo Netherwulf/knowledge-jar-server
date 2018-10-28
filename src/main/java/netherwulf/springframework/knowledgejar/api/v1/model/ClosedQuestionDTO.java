@@ -17,6 +17,8 @@ public class ClosedQuestionDTO {
     @Size(max = 100)
     private String content;
 
+    private String closedQuestionUrl;
+
     private SubchapterDTO subchapter;
     private QuizDTO quiz;
     private Set<StatementDTO> statements = new HashSet<>();

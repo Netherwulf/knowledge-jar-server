@@ -21,6 +21,8 @@ public class OpenQuestionDTO {
     @Size(max = 30)
     private String correctAnswer;
 
+    private String openQuestionUrl;
+
     private SubchapterDTO subchapter;
     private Set<AnswerDTO> answers = new HashSet<>();
     private QuizDTO quiz;

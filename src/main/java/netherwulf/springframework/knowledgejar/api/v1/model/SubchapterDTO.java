@@ -23,6 +23,8 @@ public class SubchapterDTO {
     @Size(max = 50)
     private String codeLink;
 
+    private String subchapterUrl;
+
     private ChapterDTO chapter;
     private OpenQuestionDTO openQuestion;
     private ClosedQuestionDTO closedQuestion;

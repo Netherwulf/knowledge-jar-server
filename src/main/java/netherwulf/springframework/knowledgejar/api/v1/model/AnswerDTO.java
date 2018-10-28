@@ -21,9 +21,11 @@ public class AnswerDTO {
     @NotBlank
     private String replyDate;
 
-    @NotBlank
-    private Long studentId;
+    private String answerUrl;
 
-    private Long openQuestionId;
-    private Long statementId;
+    @NotBlank
+    private StudentDTO student;
+
+    private OpenQuestionDTO openQuestion;
+    private StatementDTO statement;
 }
