@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import netherwulf.springframework.knowledgejar.api.v1.mapper.AnswerMapper;
 import netherwulf.springframework.knowledgejar.api.v1.model.AnswerDTO;
 import netherwulf.springframework.knowledgejar.api.v1.model.AnswerListDTO;
+import netherwulf.springframework.knowledgejar.controllers.AnswerController;
 import netherwulf.springframework.knowledgejar.models.Answer;
 import netherwulf.springframework.knowledgejar.models.ClosedQuestion;
 import netherwulf.springframework.knowledgejar.models.Student;
@@ -51,7 +52,7 @@ public class AnswerServiceImpl implements AnswerService {
                 .stream()
                 .map(answer -> {
                     AnswerDTO answerDTO = answerMapper.answerToAnswerDTO(answer);
-                    answerDTO.setAnswerUrl(AnswerController.BASE_URL + "/" + answer.getId());
+                    answerDTO.setAnswerUrl(AnswerController.BASE_URL + "/" + student.getId() + "/" + "answers" + "/" + answer.getId());
                     return answerDTO;
                 })
                 .collect(Collectors.toList());
@@ -90,6 +91,8 @@ public class AnswerServiceImpl implements AnswerService {
         if (answer.getStatement() != null) {
             answerDTO.setStatementId(answer.getStatement().getId());
         }
+
+        answerDTO.setAnswerUrl(AnswerController.BASE_URL + "/" + student.getId() + "/" + "answers" + "/" + answer.getId());
 
         return answerDTO;
     }
@@ -181,6 +184,8 @@ public class AnswerServiceImpl implements AnswerService {
             if (savedAnswer.getStatement() != null) {
                 savedAnswerDTO.setStatementId(savedAnswer.getStatement().getId());
             }
+
+            answerDTO.setAnswerUrl(AnswerController.BASE_URL + "/" + student.getId() + "/" + "answers" + "/" + savedAnswer.getId());
 
             return savedAnswerDTO;
         }

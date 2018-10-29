@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import netherwulf.springframework.knowledgejar.api.v1.mapper.ChapterMapper;
 import netherwulf.springframework.knowledgejar.api.v1.model.ChapterDTO;
 import netherwulf.springframework.knowledgejar.api.v1.model.ChapterListDTO;
+import netherwulf.springframework.knowledgejar.controllers.ChapterController;
 import netherwulf.springframework.knowledgejar.exceptions.NotFoundException;
 import netherwulf.springframework.knowledgejar.models.Chapter;
 import netherwulf.springframework.knowledgejar.repositories.ChapterRepository;

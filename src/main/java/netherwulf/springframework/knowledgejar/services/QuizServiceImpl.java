@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import netherwulf.springframework.knowledgejar.api.v1.mapper.QuizMapper;
 import netherwulf.springframework.knowledgejar.api.v1.model.QuizDTO;
 import netherwulf.springframework.knowledgejar.api.v1.model.QuizDTO;
+import netherwulf.springframework.knowledgejar.controllers.QuizController;
 import netherwulf.springframework.knowledgejar.models.Chapter;
 import netherwulf.springframework.knowledgejar.repositories.ChapterRepository;
 import org.springframework.stereotype.Service;
@@ -39,7 +40,7 @@ public class QuizServiceImpl implements QuizService {
         }
 
         quizDTO.setChapterId(chapter.getId());
-
+        quizDTO.setQuizUrl(QuizController.BASE_URL + "/" + chapter.getId() + "/" + "quizzes");
         return quizDTO;
     }
 }

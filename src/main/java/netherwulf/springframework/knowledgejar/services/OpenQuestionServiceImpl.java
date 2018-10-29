@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import netherwulf.springframework.knowledgejar.api.v1.mapper.OpenQuestionMapper;
 import netherwulf.springframework.knowledgejar.api.v1.model.OpenQuestionDTO;
 import netherwulf.springframework.knowledgejar.api.v1.model.OpenQuestionListDTO;
+import netherwulf.springframework.knowledgejar.controllers.OpenQuestionController;
 import netherwulf.springframework.knowledgejar.exceptions.NotFoundException;
 import netherwulf.springframework.knowledgejar.models.OpenQuestion;
 import netherwulf.springframework.knowledgejar.repositories.OpenQuestionRepository;

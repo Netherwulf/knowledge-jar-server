@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import netherwulf.springframework.knowledgejar.api.v1.mapper.SubchapterMapper;
 import netherwulf.springframework.knowledgejar.api.v1.model.SubchapterDTO;
 import netherwulf.springframework.knowledgejar.api.v1.model.SubchapterListDTO;
+import netherwulf.springframework.knowledgejar.controllers.SubchapterController;
 import netherwulf.springframework.knowledgejar.models.Chapter;
 import netherwulf.springframework.knowledgejar.models.Subchapter;
 import netherwulf.springframework.knowledgejar.repositories.ChapterRepository;
@@ -40,7 +41,7 @@ public class SubchapterServiceImpl implements SubchapterService {
                 .stream()
                 .map(subchapter -> {
                     SubchapterDTO subchapterDTO = subchapterMapper.subchapterToSubchapterDTO(subchapter);
-                    subchapterDTO.setSubchapterUrl(SubchapterController.BASE_URL + "/" + subchapter.getId());
+                    subchapterDTO.setSubchapterUrl(SubchapterController.BASE_URL + "/" + chapter.getId() + "/" + "subchapters" + "/" + subchapter.getId());
                     subchapterDTO.setChapterId(subchapter.getChapter().getId());
                     return subchapterDTO;
                 })
@@ -72,6 +73,7 @@ public class SubchapterServiceImpl implements SubchapterService {
         Subchapter subchapter = subchapterOptional.get();
         SubchapterDTO subchapterDTO = subchapterMapper.subchapterToSubchapterDTO(subchapter);
         subchapterDTO.setChapterId(subchapter.getChapter().getId());
+        subchapterDTO.setSubchapterUrl(SubchapterController.BASE_URL + "/" + chapter.getId() + "/" + "subchapters" + "/" + subchapter.getId());
 
         return subchapterDTO;
     }

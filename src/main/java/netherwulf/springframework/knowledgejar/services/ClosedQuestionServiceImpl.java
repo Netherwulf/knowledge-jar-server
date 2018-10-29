@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import netherwulf.springframework.knowledgejar.api.v1.mapper.ClosedQuestionMapper;
 import netherwulf.springframework.knowledgejar.api.v1.model.ClosedQuestionDTO;
 import netherwulf.springframework.knowledgejar.api.v1.model.ClosedQuestionListDTO;
+import netherwulf.springframework.knowledgejar.controllers.ClosedQuestionController;
 import netherwulf.springframework.knowledgejar.exceptions.NotFoundException;
 import netherwulf.springframework.knowledgejar.models.ClosedQuestion;
 import netherwulf.springframework.knowledgejar.repositories.ClosedQuestionRepository;
