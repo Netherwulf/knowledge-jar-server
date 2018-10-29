@@ -14,11 +14,11 @@ public class ChapterDTO {
     private Long id;
 
     @NotBlank
-    @Size(max = 30)
+    @Size(max = 100)
     private String name;
 
     @NotBlank
-    @Size(max = 100)
+    @Size(max = 200)
     private String description;
 
     private String chapterUrl;

@@ -14,12 +14,14 @@ public class OpenQuestionDTO {
     private Long id;
 
     @NotBlank
-    @Size(max = 100)
+    @Size(max = 200)
     private String content;
 
     @NotBlank
     @Size(max = 30)
     private String correctAnswer;
+
+    private String codeLink;
 
     private String openQuestionUrl;
 

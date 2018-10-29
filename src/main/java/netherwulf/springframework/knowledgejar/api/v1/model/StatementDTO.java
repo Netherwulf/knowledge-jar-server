@@ -5,8 +5,6 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.HashSet;
-import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -14,14 +12,22 @@ public class StatementDTO {
     private Long id;
 
     @NotBlank
-    @Size(max = 30)
+    @Size(max = 250)
     private String content;
 
     @NotBlank
-    private Boolean isCorrect;
+    private String isCorrect;
 
     private String statementUrl;
 
     private Long closedQuestionId;
+
+    public String getIsCorrect() {
+        return this.isCorrect;
+    }
+
+    public void setIsCorrect(String isCorrect) {
+        this.isCorrect = isCorrect;
+    }
 
 }

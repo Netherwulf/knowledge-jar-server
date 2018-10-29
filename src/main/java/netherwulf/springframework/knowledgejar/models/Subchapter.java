@@ -13,13 +13,13 @@ public class Subchapter {
     private String content;
     private String codeLink;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Chapter chapter;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private OpenQuestion openQuestion;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private ClosedQuestion closedQuestion;
 
 

@@ -13,13 +13,13 @@ public class Answer {
     private Boolean isCorrect;
     private String replyDate;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Student student;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private OpenQuestion openQuestion;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Statement statement;
 
     public Long getId() {

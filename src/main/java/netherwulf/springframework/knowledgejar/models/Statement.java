@@ -12,12 +12,12 @@ public class Statement {
     private Long id;
 
     private String content;
-    private Boolean isCorrect;
+    private String isCorrect;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "statement")
     private Set<Answer> answers = new HashSet<>();
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private ClosedQuestion closedQuestion;
 
     public Long getId() {
@@ -36,12 +36,12 @@ public class Statement {
         this.content = content;
     }
 
-    public Boolean getCorrect() {
+    public String getIsCorrect() {
         return isCorrect;
     }
 
-    public void setCorrect(Boolean correct) {
-        isCorrect = correct;
+    public void setIsCorrect(String isCorrect) {
+        this.isCorrect = isCorrect;
     }
 
     public Set<Answer> getAnswers() {

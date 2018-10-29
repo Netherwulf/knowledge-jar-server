@@ -12,11 +12,12 @@ public class ClosedQuestion {
     private Long id;
 
     private String content;
+    private String codeLink;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private Subchapter subchapter;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Quiz quiz;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "closedQuestion")
@@ -60,5 +61,13 @@ public class ClosedQuestion {
 
     public void setStatements(Set<Statement> statements) {
         this.statements = statements;
+    }
+
+    public String getCodeLink() {
+        return codeLink;
+    }
+
+    public void setCodeLink(String codeLink) {
+        this.codeLink = codeLink;
     }
 }

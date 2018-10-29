@@ -42,6 +42,7 @@ public class StatementServiceImpl implements StatementService {
                     StatementDTO statementDTO = statementMapper.statementToStatementDTO(statement);
                     statementDTO.setStatementUrl(StatementController.BASE_URL + "/" + closedQuestion.getId() + "/" + "statements" + "/" + statement.getId());
                     statementDTO.setClosedQuestionId(statement.getClosedQuestion().getId());
+                    statementDTO.setIsCorrect(statement.getIsCorrect());
                     return statementDTO;
                 })
                 .collect(Collectors.toList());
@@ -72,6 +73,7 @@ public class StatementServiceImpl implements StatementService {
         Statement statement = statementOptional.get();
         StatementDTO statementDTO = statementMapper.statementToStatementDTO(statement);
         statementDTO.setClosedQuestionId(statement.getClosedQuestion().getId());
+        statementDTO.setIsCorrect(statement.getIsCorrect());
 
         statementDTO.setStatementUrl(StatementController.BASE_URL + "/" + closedQuestion.getId() + "/" + "statements" + "/" + statement.getId());
 

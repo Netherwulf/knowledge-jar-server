@@ -12,15 +12,14 @@ public class SubchapterDTO {
     private Long id;
 
     @NotBlank
-    @Size(max = 30)
+    @Size(max = 100)
     private String name;
 
     @NotBlank
-    @Size(max = 200)
     private String content;
 
     @NotBlank
-    @Size(max = 50)
+    @Size(max = 100)
     private String codeLink;
 
     private String subchapterUrl;

@@ -17,7 +17,7 @@ public class Chapter {
     @ManyToMany(mappedBy = "chapters")
     private Set<Student> students;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private Quiz quiz;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "chapter")

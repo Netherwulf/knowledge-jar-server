@@ -13,14 +13,15 @@ public class OpenQuestion {
 
     private String content;
     private String correctAnswer;
+    private String codeLink;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private Subchapter subchapter;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "openQuestion")
     private Set<Answer> answers = new HashSet<>();
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Quiz quiz;
 
     public Long getId() {
@@ -69,5 +70,13 @@ public class OpenQuestion {
 
     public void setQuiz(Quiz quiz) {
         this.quiz = quiz;
+    }
+
+    public String getCodeLink() {
+        return codeLink;
+    }
+
+    public void setCodeLink(String codeLink) {
+        this.codeLink = codeLink;
     }
 }

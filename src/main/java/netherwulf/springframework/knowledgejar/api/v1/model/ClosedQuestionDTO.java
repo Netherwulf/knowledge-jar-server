@@ -14,8 +14,9 @@ public class ClosedQuestionDTO {
     private Long id;
 
     @NotBlank
-    @Size(max = 100)
+    @Size(max = 200)
     private String content;
+    private String codeLink;
 
     private String closedQuestionUrl;
 

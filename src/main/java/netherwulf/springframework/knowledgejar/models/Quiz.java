@@ -13,7 +13,7 @@ public class Quiz {
 
     private String name;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private Chapter chapter;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "quiz")
