@@ -5,7 +5,6 @@ import netherwulf.springframework.knowledgejar.api.v1.mapper.StudentMapper;
 import netherwulf.springframework.knowledgejar.api.v1.model.StudentDTO;
 import netherwulf.springframework.knowledgejar.api.v1.model.StudentListDTO;
 import netherwulf.springframework.knowledgejar.exceptions.NotFoundException;
-import netherwulf.springframework.knowledgejar.exceptions.ResourceNotFoundException;
 import netherwulf.springframework.knowledgejar.models.Student;
 import netherwulf.springframework.knowledgejar.repositories.StudentRepository;
 import org.springframework.stereotype.Service;

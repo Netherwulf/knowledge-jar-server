@@ -23,7 +23,7 @@ public class OpenQuestionDTO {
 
     private String openQuestionUrl;
 
-    private SubchapterDTO subchapter;
-    private Set<AnswerDTO> answers = new HashSet<>();
-    private QuizDTO quiz;
+    private Long subchapterId;
+    private Long quizId;
+
 }

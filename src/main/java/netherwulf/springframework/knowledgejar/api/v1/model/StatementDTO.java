@@ -22,6 +22,6 @@ public class StatementDTO {
 
     private String statementUrl;
 
-    private Set<AnswerDTO> answers = new HashSet<>();
-    private ClosedQuestionDTO closedQuestion;
+    private Long closedQuestionId;
+
 }

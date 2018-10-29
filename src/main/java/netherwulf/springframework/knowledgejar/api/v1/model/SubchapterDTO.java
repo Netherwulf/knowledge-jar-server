@@ -25,7 +25,8 @@ public class SubchapterDTO {
 
     private String subchapterUrl;
 
-    private ChapterDTO chapter;
+    private Long chapterId;
+
     private OpenQuestionDTO openQuestion;
     private ClosedQuestionDTO closedQuestion;
 }

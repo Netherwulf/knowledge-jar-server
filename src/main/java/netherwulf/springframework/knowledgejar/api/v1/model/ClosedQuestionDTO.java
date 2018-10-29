@@ -19,7 +19,8 @@ public class ClosedQuestionDTO {
 
     private String closedQuestionUrl;
 
-    private SubchapterDTO subchapter;
-    private QuizDTO quiz;
+    private Long subchapterId;
+    private Long quizId;
+
     private Set<StatementDTO> statements = new HashSet<>();
 }

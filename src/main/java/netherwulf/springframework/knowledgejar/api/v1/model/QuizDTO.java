@@ -19,7 +19,8 @@ public class QuizDTO {
 
     private String quizUrl;
 
-    private ChapterDTO chapter;
+    private Long chapterId;
+
     private Set<OpenQuestionDTO> openQuestions = new HashSet<>();
     private Set<ClosedQuestionDTO> closedQuestions = new HashSet<>();
 }

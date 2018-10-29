@@ -28,6 +28,12 @@ public class Student {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
     private Set<Answer> answers = new HashSet<>();
 
+    public Student addAnswer(Answer answer){
+        answer.setStudent(this);
+        this.answers.add(answer);
+        return this;
+    }
+
     public Long getId() {
         return id;
     }

@@ -16,6 +16,6 @@ public interface StudentService {
 
     StudentDTO saveAndReturnDTO(Student chapter);
 
-    public void deleteStudentById(Long id);
+    void deleteStudentById(Long id);
 
 }

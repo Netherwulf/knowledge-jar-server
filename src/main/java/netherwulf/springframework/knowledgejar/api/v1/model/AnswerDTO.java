@@ -24,8 +24,8 @@ public class AnswerDTO {
     private String answerUrl;
 
     @NotBlank
-    private StudentDTO student;
+    private Long studentId;
 
-    private OpenQuestionDTO openQuestion;
-    private StatementDTO statement;
+    private Long openQuestionId;
+    private Long statementId;
 }
