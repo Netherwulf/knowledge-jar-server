@@ -259,7 +259,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         chapterThree.setName("Tablice");
         chapterThree.setDescription("Rozdział przedstawiający tablice w języku Java");
 
-        // creating quiz for chapter 2
+        // creating quiz for chapter 3
         Quiz quizThree = new Quiz();
         quizThree.setName("Quiz 3");
         quizThree.setChapter(chapterThree);
@@ -324,10 +324,10 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
         // ======================================================= creating 4 (fourth) chapter - Classes and Objects =======================================================
         Chapter chapterFour = new Chapter();
-        chapterFour.setName("Tablice");
-        chapterFour.setDescription("Rozdział przedstawiający tablice w języku Java");
+        chapterFour.setName("Klasy i Obiekty");
+        chapterFour.setDescription("Rozdział przedstawiający klasy i obiekty w języku Java");
 
-        // creating quiz for chapter 2
+        // creating quiz for chapter 4
         Quiz quizFour = new Quiz();
         quizFour.setName("Quiz 4");
         quizFour.setChapter(chapterFour);
@@ -341,20 +341,34 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         quizFourQuestionOne.setCodeLink("https://gist.github.com/Netherwulf/44f30ca3f278f1416dc13113a284ecf7.js");
         quizFourQuestionOne.setCorrectAnswer("void");
 
-        // Quiz 4 Q 2 OQ 3
+        // Quiz 4 Q 2 OQ 2
         OpenQuestion quizFourQuestionTwo = new OpenQuestion();
         quizFour.getOpenQuestions().add(quizFourQuestionTwo);
         quizFourQuestionTwo.setQuiz(quizFour);
         quizFourQuestionTwo.setContent("Który modyfikator dostępu mówi o tym, że do pola klasy mogą mieć dostęp obiekty innych klas?");
         quizFourQuestionTwo.setCorrectAnswer("public");
 
-        // Quiz 4 Q 3 OQ 2
+        // Quiz 4 Q 3 OQ 3
         OpenQuestion quizFourQuestionThree = new OpenQuestion();
         quizFour.getOpenQuestions().add(quizFourQuestionThree);
         quizFourQuestionThree.setQuiz(quizFour);
         quizFourQuestionThree.setContent("Co należy wpisać w miejsce symbolu (###), aby metoda calc() przyjmowała jeden argument typu int?");
         quizFourQuestionThree.setCorrectAnswer("int");
         quizFourQuestionThree.setCodeLink("https://gist.github.com/Netherwulf/12ff7ce4126542d849dc1c1a8912020a.js");
+
+        // Quiz 4 Q 4 OQ 4
+        OpenQuestion quizFourQuestionFour = new OpenQuestion();
+        quizFour.getOpenQuestions().add(quizFourQuestionFour);
+        quizFourQuestionFour.setQuiz(quizFour);
+        quizFourQuestionFour.setContent("Jakiego słowa kluczowego należy użyć, aby uczynić klasę abstrakcyjną?");
+        quizFourQuestionFour.setCorrectAnswer("abstract");
+
+        // Quiz 4 Q 5 OQ 5
+        OpenQuestion quizFourQuestionFive = new OpenQuestion();
+        quizFour.getOpenQuestions().add(quizFourQuestionFive);
+        quizFourQuestionFive.setQuiz(quizFour);
+        quizFourQuestionFive.setContent("Jakiego słowa kluczowego należy użyć przy tworzeniu interfejsu?");
+        quizFourQuestionFive.setCorrectAnswer("interface");
 
         // chapter 4 subchapter 1
         Subchapter ch4subchapterOne = new Subchapter();
@@ -376,7 +390,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         Subchapter ch4subchapterTwo = new Subchapter();
         chapterFour.getSubchapters().add(ch4subchapterTwo);
         ch4subchapterTwo.setChapter(chapterFour);
-        ch4subchapterTwo.setName("Metody");
+        ch4subchapterTwo.setName("Metoda");
         ch4subchapterTwo.setContent("Metody definiują zachowanie obiektów. Dostęp do metod i pól klasy określają modyfikatory dostępu." +
                 "\n" + "Dostęp mogą mieć wszyscy (public), tylko obiekty tej samej klasy (private).");
 
@@ -402,8 +416,132 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         chapterFourSubchapterThreeQuestion.setContent("Jakiego słowa kluczowego należy użyć, aby zwrócić wartość w metodzie?");
         chapterFourSubchapterThreeQuestion.setCorrectAnswer("return");
 
+        // chapter 4 subchapter 4
+        Subchapter ch4subchapterFour = new Subchapter();
+        chapterFour.getSubchapters().add(ch4subchapterFour);
+        ch4subchapterFour.setChapter(chapterFour);
+        ch4subchapterFour.setName("Dziedziczenie");
+        ch4subchapterFour.setContent("Dziedziczenie umożliwia klasie uzyskać cechy (metody i pola) inne klasy." +
+                "\n" + "Dzięki temu dane mogą być bardziej uporządkowane i można nadać im hierarchię podobną do rzeczywistej.");
+        ch4subchapterFour.setCodeLink("https://gist.github.com/Netherwulf/6c025e81f5a6331dcd1fd6de72170f30.js");
+
+        // chapter 4 subchapter 4 question
+        OpenQuestion chapterFourSubchapterFourQuestion = new OpenQuestion();
+        ch4subchapterFour.setOpenQuestion(chapterFourSubchapterFourQuestion);
+        chapterFourSubchapterFourQuestion.setSubchapter(ch4subchapterFour);
+        chapterFourSubchapterFourQuestion.setContent("Co należy wpisać w miejsce symbolu (###), aby klasa Dog dziedziczyła po klasie Animal?");
+        chapterFourSubchapterFourQuestion.setCorrectAnswer("extends");
+        chapterFourSubchapterFourQuestion.setCodeLink("https://gist.github.com/Netherwulf/d9f820d458e164910c4df85b7596a33a.js");
+
+        // chapter 4 subchapter 5
+        Subchapter ch4subchapterFive = new Subchapter();
+        chapterFour.getSubchapters().add(ch4subchapterFive);
+        ch4subchapterFive.setChapter(chapterFour);
+        ch4subchapterFive.setName("Klasa Abstrakcyjna");
+        ch4subchapterFive.setContent("Klasa abstrakcyjna służy do skupienia ogólnych cech (metod i pół) grupy różnych klas." +
+                "\n" + "Nie można utworzyć obiektu tej klasy, ale można po niej dziedziczyć." +
+                "\n" + "Pozwala to bardziej uporządkować zależności między klasami w programie.");
+        ch4subchapterFive.setCodeLink("https://gist.github.com/Netherwulf/249b620836543fe53919593e34f8ba70.js");
+
+        // chapter 4 subchapter 5 question
+        ClosedQuestion chapterFourSubchapterFiveQuestion = new ClosedQuestion();
+        ch4subchapterFive.setClosedQuestion(chapterFourSubchapterFiveQuestion);
+        chapterFourSubchapterFiveQuestion.setSubchapter(ch4subchapterFive);
+        chapterFourSubchapterFiveQuestion.setContent("Czy można utworzyć obiekt klasy abstrakcyjnej?");
+
+        Statement ch4subchapterFiveStatementOne = new Statement();
+        chapterFourSubchapterFiveQuestion.getStatements().add(ch4subchapterFiveStatementOne);
+        ch4subchapterFiveStatementOne.setClosedQuestion(chapterFourSubchapterFiveQuestion);
+        ch4subchapterFiveStatementOne.setContent("Tak");
+        ch4subchapterFiveStatementOne.setIsCorrect("false");
+
+        Statement ch4subchapterFiveStatementTwo = new Statement();
+        chapterFourSubchapterFiveQuestion.getStatements().add(ch4subchapterFiveStatementTwo);
+        ch4subchapterFiveStatementTwo.setClosedQuestion(chapterFourSubchapterFiveQuestion);
+        ch4subchapterFiveStatementTwo.setContent("Nie");
+        ch4subchapterFiveStatementTwo.setIsCorrect("true");
+
+        // chapter 4 subchapter 6
+        Subchapter ch4subchapterSix = new Subchapter();
+        chapterFour.getSubchapters().add(ch4subchapterSix);
+        ch4subchapterSix.setChapter(chapterFour);
+        ch4subchapterSix.setName("Interfejs");
+        ch4subchapterSix.setContent("Interfejs pozwala skupić ogólne cechy (metody) grupy różnych klas." +
+                "\n" + "Nie można utworzyć obiektu interfejsu, ale jedna klasa może implementować wiele interfejsów." +
+                "\n" + "Pozwala to zagwarantować obecność pewnych metod w klasach implementujących dany interfejs.");
+        ch4subchapterSix.setCodeLink("https://gist.github.com/Netherwulf/7dc789c715a95015cae05242a84a777b.js");
+
+        // chapter 4 subchapter 6 question
+        ClosedQuestion chapterFourSubchapterSixQuestion = new ClosedQuestion();
+        ch4subchapterSix.setClosedQuestion(chapterFourSubchapterSixQuestion);
+        chapterFourSubchapterSixQuestion.setSubchapter(ch4subchapterSix);
+        chapterFourSubchapterSixQuestion.setContent("Ile maksymalnie interfejsów może implementować jedna klasa?");
+
+        Statement ch4subchapterSixStatementOne = new Statement();
+        chapterFourSubchapterSixQuestion.getStatements().add(ch4subchapterSixStatementOne);
+        ch4subchapterSixStatementOne.setClosedQuestion(chapterFourSubchapterSixQuestion);
+        ch4subchapterSixStatementOne.setContent("Wiele");
+        ch4subchapterSixStatementOne.setIsCorrect("true");
+
+        Statement ch4subchapterSixStatementTwo = new Statement();
+        chapterFourSubchapterSixQuestion.getStatements().add(ch4subchapterSixStatementTwo);
+        ch4subchapterSixStatementTwo.setClosedQuestion(chapterFourSubchapterSixQuestion);
+        ch4subchapterSixStatementTwo.setContent("Jeden");
+        ch4subchapterSixStatementTwo.setIsCorrect("false");
+
         // ======================================================= Saving Chapter 4 =======================================================
         chapterList.add(chapterFour);
+
+        // ======================================================= creating 5 (fifth) chapter - Exceptions =======================================================
+        Chapter chapterFive = new Chapter();
+        chapterFive.setName("Wyjątki");
+        chapterFive.setDescription("Rozdział przedstawiający wyjątki w języku Java");
+
+        // creating quiz for chapter 5
+        Quiz quizFive = new Quiz();
+        quizFive.setName("Quiz 5");
+        quizFive.setChapter(chapterFive);
+        chapterFive.setQuiz(quizFive);
+
+        // Quiz 5 Q 1 OQ 1
+        OpenQuestion quizFiveQuestionOne = new OpenQuestion();
+        quizFive.getOpenQuestions().add(quizFiveQuestionOne);
+        quizFiveQuestionOne.setQuiz(quizFive);
+        quizFiveQuestionOne.setContent("Co należy wpisać w miejsce symbolu (###), aby zareagować na wszystkie możliwe wyjątki?");
+        quizFiveQuestionOne.setCodeLink("https://gist.github.com/Netherwulf/b9e0642afa11629ada784e59a5f0a19c.js");
+        quizFiveQuestionOne.setCorrectAnswer("catch");
+
+        // chapter 5 subchapter 1
+        Subchapter ch5subchapterOne = new Subchapter();
+        chapterFive.getSubchapters().add(ch5subchapterOne);
+        ch5subchapterOne.setChapter(chapterFive);
+        ch5subchapterOne.setName("Wyjątek");
+        ch5subchapterOne.setContent("Wyjątek to problem, który występuje podczas wykonywania programu." +
+                "\n" +"Wyjątki często powodują nieplanowanie zakończenie działania programu."+
+                "\n" +"Aby się im przeciwstawić, należy obudować fragment kodu mogący wywołać wyjątek blokiem try/catch.");
+        ch5subchapterOne.setCodeLink("https://gist.github.com/Netherwulf/2d17f147c58978f757f25b02dd2e7765.js");
+
+
+        // chapter 5 subchapter 1 question
+        ClosedQuestion chapterFiveSubchapterOneQuestion = new ClosedQuestion();
+        ch5subchapterOne.setClosedQuestion(chapterFiveSubchapterOneQuestion);
+        chapterFiveSubchapterOneQuestion.setSubchapter(ch5subchapterOne);
+        chapterFiveSubchapterOneQuestion.setContent("Czy wyjątek może wywołać nieprzewidziane przerwanie pracy programu?");
+
+        Statement ch5subchapterOneStatementOne = new Statement();
+        chapterFiveSubchapterOneQuestion.getStatements().add(ch5subchapterOneStatementOne);
+        ch5subchapterOneStatementOne.setClosedQuestion(chapterFiveSubchapterOneQuestion);
+        ch5subchapterOneStatementOne.setContent("Nie");
+        ch5subchapterOneStatementOne.setIsCorrect("false");
+
+        Statement ch5subchapterOneStatementTwo = new Statement();
+        chapterFiveSubchapterOneQuestion.getStatements().add(ch5subchapterOneStatementTwo);
+        ch5subchapterOneStatementTwo.setClosedQuestion(chapterFiveSubchapterOneQuestion);
+        ch5subchapterOneStatementTwo.setContent("Tak");
+        ch5subchapterOneStatementTwo.setIsCorrect("true");
+
+        // ======================================================= Saving Chapter 5 =======================================================
+        chapterList.add(chapterFive);
 
         // saving chapters to database
         chapterRepository.saveAll(chapterList);
@@ -415,6 +553,18 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
     private void loadStudents(){
         // initialization of list of chapters
         List<Student> studentList = new ArrayList<Student>();
+
+        Student admin = new Student();
+
+        // adding first student admin/admin to student list
+        studentList.add(admin);
+        admin.setLogin("admin");
+        admin.setPassword("admin");
+        admin.setName("Jan");
+        admin.setSurname("Kowalski");
+        admin.setProgress(0);
+        admin.setEmail("admin@admin.com");
+        admin.setJoinDate("30.10.2018");
 
         // saving students to database
         studentRepository.saveAll(studentList);
