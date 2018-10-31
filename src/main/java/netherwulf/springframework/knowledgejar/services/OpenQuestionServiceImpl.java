@@ -33,6 +33,12 @@ public class OpenQuestionServiceImpl implements OpenQuestionService {
                 .stream()
                 .map(openQuestion -> {
                     OpenQuestionDTO openQuestionDTO = openQuestionMapper.openQuestionToOpenQuestionDTO(openQuestion);
+                    if (openQuestion.getQuiz() != null) {
+                        openQuestionDTO.setQuizId(openQuestion.getQuiz().getId());
+                    }
+                    if (openQuestion.getSubchapter() != null) {
+                        openQuestionDTO.setSubchapterId(openQuestion.getSubchapter().getId());
+                    }
                     openQuestionDTO.setOpenQuestionUrl(OpenQuestionController.BASE_URL + "/" + openQuestion.getId());
                     return openQuestionDTO;
                 })
@@ -50,7 +56,12 @@ public class OpenQuestionServiceImpl implements OpenQuestionService {
 
         OpenQuestionDTO openQuestionDTO = openQuestionMapper.openQuestionToOpenQuestionDTO(openQuestionOptional.get());
         openQuestionDTO.setOpenQuestionUrl(OpenQuestionController.BASE_URL + "/" + openQuestionDTO.getId());
-
+        if (openQuestionOptional.get().getQuiz() != null) {
+            openQuestionDTO.setQuizId(openQuestionOptional.get().getQuiz().getId());
+        }
+        if (openQuestionOptional.get().getSubchapter() != null) {
+            openQuestionDTO.setSubchapterId(openQuestionOptional.get().getSubchapter().getId());
+        }
         return openQuestionDTO;
     }
 }

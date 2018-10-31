@@ -27,7 +27,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         this.studentRepository = studentRepository;
     }
 
-    private void loadChapters() {
+    private void loadData() {
         // initialization of list of chapters
         List<Chapter> chapterList = new ArrayList<>();
 
@@ -527,13 +527,11 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         chapterList.add(chapterFive);
 
         // saving chapters to database
-        chapterRepository.saveAll(chapterList);
-        System.out.println("Chapters loaded = " + chapterRepository.count());
-        System.out.println("Open Questions loaded = " + openQuestionRepository.count());
-        System.out.println("Closed Questions loaded = " + closedQuestionRepository.count());
-    }
+//        chapterRepository.saveAll(chapterList);
+//        System.out.println("Chapters loaded = " + chapterRepository.count());
+//        System.out.println("Open Questions loaded = " + openQuestionRepository.count());
+//        System.out.println("Closed Questions loaded = " + closedQuestionRepository.count());
 
-    private void loadStudents(){
         // initialization of list of chapters
         List<Student> studentList = new ArrayList<Student>();
 
@@ -549,14 +547,49 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         admin.setEmail("admin@admin.com");
         admin.setJoinDate("30.10.2018");
 
+        Answer answer = new Answer();
+        admin.getAnswers().add(answer);
+        answer.setStudent(admin);
+        answer.setContent("Na wielu");
+        answer.setCorrect("true");
+        answer.setReplyDate("31.10.2018");
+        answer.setStatement(subchapterOneStatementTwo);
+
         // saving students to database
         studentRepository.saveAll(studentList);
         System.out.println("Students loaded = " + studentRepository.count());
+
+        chapterRepository.saveAll(chapterList);
+        System.out.println("Chapters loaded = " + chapterRepository.count());
+        System.out.println("Open Questions loaded = " + openQuestionRepository.count());
+        System.out.println("Closed Questions loaded = " + closedQuestionRepository.count());
     }
+
+//    private void loadStudents(){
+//        // initialization of list of chapters
+//        List<Student> studentList = new ArrayList<Student>();
+//
+//        Student admin = new Student();
+//
+//        // adding first student admin/admin to student list
+//        studentList.add(admin);
+//        admin.setLogin("admin");
+//        admin.setPassword("admin");
+//        admin.setName("Jan");
+//        admin.setSurname("Kowalski");
+//        admin.setProgress(0);
+//        admin.setEmail("admin@admin.com");
+//        admin.setJoinDate("30.10.2018");
+//
+//
+//        // saving students to database
+//        studentRepository.saveAll(studentList);
+//        System.out.println("Students loaded = " + studentRepository.count());
+//    }
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        loadChapters();
-        loadStudents();
+        loadData();
+//        loadStudents();
     }
 }

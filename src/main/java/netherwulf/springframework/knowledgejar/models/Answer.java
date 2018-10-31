@@ -10,7 +10,7 @@ public class Answer {
     private Long id;
 
     private String content;
-    private Boolean isCorrect;
+    private String isCorrect;
     private String replyDate;
 
     @ManyToOne(cascade = {CascadeType.ALL})
@@ -38,11 +38,11 @@ public class Answer {
         this.content = content;
     }
 
-    public Boolean getCorrect() {
+    public String getCorrect() {
         return isCorrect;
     }
 
-    public void setCorrect(Boolean correct) {
+    public void setCorrect(String correct) {
         isCorrect = correct;
     }
 

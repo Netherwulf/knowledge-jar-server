@@ -33,6 +33,12 @@ public class ClosedQuestionServiceImpl implements ClosedQuestionService {
                 .stream()
                 .map(closedQuestion -> {
                     ClosedQuestionDTO closedQuestionDTO = closedQuestionMapper.closedQuestionToClosedQuestionDTO(closedQuestion);
+                    if (closedQuestion.getQuiz() != null) {
+                        closedQuestionDTO.setQuizId(closedQuestion.getQuiz().getId());
+                    }
+                    if (closedQuestion.getSubchapter() != null) {
+                        closedQuestionDTO.setSubchapterId(closedQuestion.getSubchapter().getId());
+                    }
                     closedQuestionDTO.setClosedQuestionUrl(ClosedQuestionController.BASE_URL + "/" + closedQuestion.getId());
                     return closedQuestionDTO;
                 })
@@ -50,7 +56,12 @@ public class ClosedQuestionServiceImpl implements ClosedQuestionService {
 
         ClosedQuestionDTO closedQuestionDTO = closedQuestionMapper.closedQuestionToClosedQuestionDTO(closedQuestionOptional.get());
         closedQuestionDTO.setClosedQuestionUrl(ClosedQuestionController.BASE_URL + "/" + closedQuestionDTO.getId());
-
+        if (closedQuestionOptional.get().getQuiz() != null) {
+            closedQuestionDTO.setQuizId(closedQuestionOptional.get().getQuiz().getId());
+        }
+        if (closedQuestionOptional.get().getSubchapter() != null) {
+            closedQuestionDTO.setSubchapterId(closedQuestionOptional.get().getSubchapter().getId());
+        }
         return closedQuestionDTO;
     }
 }

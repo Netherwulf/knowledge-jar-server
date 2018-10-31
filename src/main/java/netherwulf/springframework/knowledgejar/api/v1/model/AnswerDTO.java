@@ -16,7 +16,7 @@ public class AnswerDTO {
     private String content;
 
     @NotBlank
-    private Boolean isCorrect;
+    private String isCorrect;
 
     @NotBlank
     private String replyDate;

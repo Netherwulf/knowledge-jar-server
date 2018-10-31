@@ -14,7 +14,7 @@ public class Statement {
     private String content;
     private String isCorrect;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "statement")
+    @OneToMany(mappedBy = "statement")
     private Set<Answer> answers = new HashSet<>();
 
     @ManyToOne(cascade = {CascadeType.ALL})

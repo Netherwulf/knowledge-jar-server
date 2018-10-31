@@ -52,6 +52,13 @@ public class AnswerServiceImpl implements AnswerService {
                 .stream()
                 .map(answer -> {
                     AnswerDTO answerDTO = answerMapper.answerToAnswerDTO(answer);
+                    if (answer.getOpenQuestion() != null) {
+                        answerDTO.setOpenQuestionId(answer.getOpenQuestion().getId());
+                    }
+                    if (answer.getStatement() != null) {
+                        answerDTO.setStatementId(answer.getStatement().getId());
+                    }
+                    answerDTO.setStudentId(answer.getStudent().getId());
                     answerDTO.setAnswerUrl(AnswerController.BASE_URL + "/" + student.getId() + "/" + "answers" + "/" + answer.getId());
                     return answerDTO;
                 })
