@@ -58,6 +58,7 @@ public class AnswerServiceImpl implements AnswerService {
                     if (answer.getStatement() != null) {
                         answerDTO.setStatementId(answer.getStatement().getId());
                     }
+                    answerDTO.setIsCorrect(answer.getCorrect());
                     answerDTO.setStudentId(answer.getStudent().getId());
                     answerDTO.setAnswerUrl(AnswerController.BASE_URL + "/" + student.getId() + "/" + "answers" + "/" + answer.getId());
                     return answerDTO;
@@ -89,6 +90,7 @@ public class AnswerServiceImpl implements AnswerService {
 
         Answer answer = answerOptional.get();
         AnswerDTO answerDTO = answerMapper.answerToAnswerDTO(answer);
+        answerDTO.setIsCorrect(answer.getCorrect());
         answerDTO.setStudentId(answer.getStudent().getId());
 
         if (answer.getOpenQuestion() != null) {
