@@ -29,7 +29,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
     private void loadChapters() {
         // initialization of list of chapters
-        List<Chapter> chapterList = new ArrayList<Chapter>();
+        List<Chapter> chapterList = new ArrayList<>();
 
         // ======================================================= creating 1 (first) chapter - Basics of Java =======================================================
         Chapter chapterOne = new Chapter();
@@ -87,8 +87,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         chapterOne.getSubchapters().add(subchapterOne);
         subchapterOne.setChapter(chapterOne);
         subchapterOne.setName("Wprowadzenie do Javy");
-        subchapterOne.setContent("Java jest językiem programowania wysokiego poziomu, który jest niezależny od platformy." +
-                            "\n" +"Oznacza to, że program napisany w Javie może być uruchomiony na wielu urządzeniach.");
+        subchapterOne.setContent("Java jest językiem programowania wysokiego poziomu, który jest niezależny od platformy. Oznacza to, że program napisany w Javie może być uruchomiony na wielu urządzeniach.");
 
         // chapter 1 subchapter 1 question
         ClosedQuestion chapterOneSubchapterOneQuestion = new ClosedQuestion();
@@ -113,8 +112,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         chapterOne.getSubchapters().add(subchapterTwo);
         subchapterTwo.setChapter(chapterOne);
         subchapterTwo.setName("Zmienne");
-        subchapterTwo.setContent("Zmienne służą do przechowywania danych, które zostaną przetworzone." +
-                "\n" +"Podstawowymi typami w Javie są int (całkowitoliczbowy), double (zmiennoprzecinkowy) i String (ciąg znaków)");
+        subchapterTwo.setContent("Zmienne służą do przechowywania danych, które zostaną przetworzone. Podstawowymi typami w Javie są int (całkowitoliczbowy), double (zmiennoprzecinkowy) i String (ciąg znaków)");
 
         // chapter 1 subchapter 2 question
         OpenQuestion chapterOneSubchapterTwoQuestion = new OpenQuestion();
@@ -128,8 +126,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         chapterOne.getSubchapters().add(subchapterThree);
         subchapterThree.setChapter(chapterOne);
         subchapterThree.setName("Podstawowe Operatory");
-        subchapterThree.setContent("Java oferuje liczne operatory pozwalające na wykonywanie operacji matematycznych." +
-                "\n" +"Najbardziej podstawowymi operatorami jest operator dodawania (+), odejmowania (-), mnożenia (*) i dzielenia (/).");
+        subchapterThree.setContent("Java oferuje liczne operatory pozwalające na wykonywanie operacji matematycznych. Najbardziej podstawowymi operatorami jest operator dodawania (+), odejmowania (-), mnożenia (*) i dzielenia (/).");
         subchapterThree.setCodeLink("https://gist.github.com/Netherwulf/2770b677dfc352e6fed68f62ec1468d9.js");
 
         // chapter 1 subchapter 3 question
@@ -197,15 +194,13 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         chapterTwo.getSubchapters().add(ch2subchapterOne);
         ch2subchapterOne.setChapter(chapterTwo);
         ch2subchapterOne.setName("Instrukcja if");
-        ch2subchapterOne.setContent("Java zawiera słowo kluczowe if, dzięki któremu można zapisać instrukcję warunkową." +
-                "\n" +"Instrukcja wykona się tylko jeśli warunek zapisany w nawiasie przy słowie kluczowym if okaże się prawdziwy ");
+        ch2subchapterOne.setContent("Java zawiera słowo kluczowe if, dzięki któremu można zapisać instrukcję warunkową. Instrukcja wykona się tylko jeśli warunek zapisany w nawiasie przy słowie kluczowym if okaże się prawdziwy ");
 
         // chapter 2 subchapter 1 question
         ClosedQuestion chapterTwoSubchapterOneQuestion = new ClosedQuestion();
         ch2subchapterOne.setClosedQuestion(chapterTwoSubchapterOneQuestion);
         chapterTwoSubchapterOneQuestion.setSubchapter(ch2subchapterOne);
-        chapterTwoSubchapterOneQuestion.setContent("Aby instrukcje zapisane w środku instrukcji warunkowej się wykonały," +
-                "\n" + "warunek zapisany w nawiasie przy słowie kluczowym if musi być:");
+        chapterTwoSubchapterOneQuestion.setContent("Aby instrukcje zapisane w środku instrukcji warunkowej się wykonały, warunek zapisany w nawiasie przy słowie kluczowym if musi być:");
 
         Statement ch2subchapterOneStatementOne = new Statement();
         chapterTwoSubchapterOneQuestion.getStatements().add(ch2subchapterOneStatementOne);
@@ -224,8 +219,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         chapterTwo.getSubchapters().add(ch2subchapterTwo);
         ch2subchapterTwo.setChapter(chapterTwo);
         ch2subchapterTwo.setName("Pętla for");
-        ch2subchapterTwo.setContent("Pętla for jest bardzo użyteczna jeśli chcemy wykonać pewien fragment kodu określoną liczbę razy." +
-                "\n" +"Do jej konstrukcji wykorzystujemy słowo kluczowe for");
+        ch2subchapterTwo.setContent("Pętla for jest bardzo użyteczna jeśli chcemy wykonać pewien fragment kodu określoną liczbę razy. Do jej konstrukcji wykorzystujemy słowo kluczowe for");
         ch2subchapterTwo.setCodeLink("https://gist.github.com/Netherwulf/14b1de4852e14585f47e204ae91d874f.js");
 
         // chapter 2 subchapter 2 question
@@ -240,8 +234,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         chapterTwo.getSubchapters().add(ch2subchapterThree);
         ch2subchapterThree.setChapter(chapterTwo);
         ch2subchapterThree.setName("Pętla while");
-        ch2subchapterThree.setContent("Java oferuje również pętlę while, którą możemy skonstruować za pomocą słowa kluczowego while." +
-                "\n" +"Instrukcje zawarte wewnątrz tej pętli będą się wykonywać ponownie tylko jeśli warunek określony w nawiasie będzie prawdziwy.");
+        ch2subchapterThree.setContent("Java oferuje również pętlę while, którą możemy skonstruować za pomocą słowa kluczowego while. Instrukcje zawarte wewnątrz tej pętli będą się wykonywać ponownie tylko jeśli warunek określony w nawiasie będzie prawdziwy.");
         ch2subchapterThree.setCodeLink("https://gist.github.com/Netherwulf/51dbbd042c5416ba4a17d703177d44ba.js");
 
         // chapter 2 subchapter 3 question
@@ -293,8 +286,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         chapterThree.getSubchapters().add(ch3subchapterOne);
         ch3subchapterOne.setChapter(chapterThree);
         ch3subchapterOne.setName("Tablica");
-        ch3subchapterOne.setContent("Tablica to kolekcja zmiennych tego samego typu." +
-                "\n" +"Przechowywane w niej zmienne są indeksowane od 0.");
+        ch3subchapterOne.setContent("Tablica to kolekcja zmiennych tego samego typu. Przechowywane w niej zmienne są indeksowane od 0.");
 
         // chapter 3 subchapter 1 question
         OpenQuestion chapterThreeSubchapterOneQuestion = new OpenQuestion();
@@ -375,8 +367,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         chapterFour.getSubchapters().add(ch4subchapterOne);
         ch4subchapterOne.setChapter(chapterFour);
         ch4subchapterOne.setName("Klasa");
-        ch4subchapterOne.setContent("Klasa opisuje dokładnie to czym będzie obiekt, ale nie jest obiektem." +
-                "\n" +"Innymi słowy klasa jest schematem lub opisem, na bazie którego tworzymy obiekty o danych właściwościach.");
+        ch4subchapterOne.setContent("Klasa opisuje dokładnie to czym będzie obiekt, ale nie jest obiektem. Innymi słowy klasa jest schematem lub opisem, na bazie którego tworzymy obiekty o danych właściwościach.");
 
 
         // chapter 4 subchapter 1 question
@@ -391,8 +382,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         chapterFour.getSubchapters().add(ch4subchapterTwo);
         ch4subchapterTwo.setChapter(chapterFour);
         ch4subchapterTwo.setName("Metoda");
-        ch4subchapterTwo.setContent("Metody definiują zachowanie obiektów. Dostęp do metod i pól klasy określają modyfikatory dostępu." +
-                "\n" + "Dostęp mogą mieć wszyscy (public), tylko obiekty tej samej klasy (private).");
+        ch4subchapterTwo.setContent("Metody definiują zachowanie obiektów. Dostęp do metod i pól klasy określają modyfikatory dostępu. Dostęp mogą mieć wszyscy (public), tylko obiekty tej samej klasy (private).");
 
         // chapter 4 subchapter 2 question
         OpenQuestion chapterFourSubchapterTwoQuestion = new OpenQuestion();
@@ -421,8 +411,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         chapterFour.getSubchapters().add(ch4subchapterFour);
         ch4subchapterFour.setChapter(chapterFour);
         ch4subchapterFour.setName("Dziedziczenie");
-        ch4subchapterFour.setContent("Dziedziczenie umożliwia klasie uzyskać cechy (metody i pola) inne klasy." +
-                "\n" + "Dzięki temu dane mogą być bardziej uporządkowane i można nadać im hierarchię podobną do rzeczywistej.");
+        ch4subchapterFour.setContent("Dziedziczenie umożliwia klasie uzyskać cechy (metody i pola) inne klasy. Dzięki temu dane mogą być bardziej uporządkowane i można nadać im hierarchię podobną do rzeczywistej.");
         ch4subchapterFour.setCodeLink("https://gist.github.com/Netherwulf/6c025e81f5a6331dcd1fd6de72170f30.js");
 
         // chapter 4 subchapter 4 question
@@ -438,9 +427,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         chapterFour.getSubchapters().add(ch4subchapterFive);
         ch4subchapterFive.setChapter(chapterFour);
         ch4subchapterFive.setName("Klasa Abstrakcyjna");
-        ch4subchapterFive.setContent("Klasa abstrakcyjna służy do skupienia ogólnych cech (metod i pół) grupy różnych klas." +
-                "\n" + "Nie można utworzyć obiektu tej klasy, ale można po niej dziedziczyć." +
-                "\n" + "Pozwala to bardziej uporządkować zależności między klasami w programie.");
+        ch4subchapterFive.setContent("Klasa abstrakcyjna służy do skupienia ogólnych cech (metod i pół) grupy różnych klas. Nie można utworzyć obiektu tej klasy, ale można po niej dziedziczyć. Pozwala to bardziej uporządkować zależności między klasami w programie.");
         ch4subchapterFive.setCodeLink("https://gist.github.com/Netherwulf/249b620836543fe53919593e34f8ba70.js");
 
         // chapter 4 subchapter 5 question
@@ -466,9 +453,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         chapterFour.getSubchapters().add(ch4subchapterSix);
         ch4subchapterSix.setChapter(chapterFour);
         ch4subchapterSix.setName("Interfejs");
-        ch4subchapterSix.setContent("Interfejs pozwala skupić ogólne cechy (metody) grupy różnych klas." +
-                "\n" + "Nie można utworzyć obiektu interfejsu, ale jedna klasa może implementować wiele interfejsów." +
-                "\n" + "Pozwala to zagwarantować obecność pewnych metod w klasach implementujących dany interfejs.");
+        ch4subchapterSix.setContent("Interfejs pozwala skupić ogólne cechy (metody) grupy różnych klas. Nie można utworzyć obiektu interfejsu, ale jedna klasa może implementować wiele interfejsów. Pozwala to zagwarantować obecność pewnych metod w klasach implementujących dany interfejs.");
         ch4subchapterSix.setCodeLink("https://gist.github.com/Netherwulf/7dc789c715a95015cae05242a84a777b.js");
 
         // chapter 4 subchapter 6 question
@@ -516,9 +501,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         chapterFive.getSubchapters().add(ch5subchapterOne);
         ch5subchapterOne.setChapter(chapterFive);
         ch5subchapterOne.setName("Wyjątek");
-        ch5subchapterOne.setContent("Wyjątek to problem, który występuje podczas wykonywania programu." +
-                "\n" +"Wyjątki często powodują nieplanowanie zakończenie działania programu."+
-                "\n" +"Aby się im przeciwstawić, należy obudować fragment kodu mogący wywołać wyjątek blokiem try/catch.");
+        ch5subchapterOne.setContent("Wyjątek to problem, który występuje podczas wykonywania programu. Wyjątki często powodują nieplanowanie zakończenie działania programu. Aby się im przeciwstawić, należy obudować fragment kodu mogący wywołać wyjątek blokiem try/catch.");
         ch5subchapterOne.setCodeLink("https://gist.github.com/Netherwulf/2d17f147c58978f757f25b02dd2e7765.js");
 
 
