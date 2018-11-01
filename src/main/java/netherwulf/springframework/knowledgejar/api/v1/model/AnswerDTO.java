@@ -23,9 +23,9 @@ public class AnswerDTO {
 
     private String answerUrl;
 
-    @NotBlank
     private Long studentId;
 
     private Long openQuestionId;
     private Long statementId;
+    private Long closedQuestionId;
 }

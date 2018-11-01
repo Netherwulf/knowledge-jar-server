@@ -4,14 +4,17 @@ import lombok.extern.slf4j.Slf4j;
 import netherwulf.springframework.knowledgejar.api.v1.mapper.ClosedQuestionMapper;
 import netherwulf.springframework.knowledgejar.api.v1.model.ClosedQuestionDTO;
 import netherwulf.springframework.knowledgejar.api.v1.model.ClosedQuestionListDTO;
+import netherwulf.springframework.knowledgejar.api.v1.model.StatementDTO;
 import netherwulf.springframework.knowledgejar.controllers.ClosedQuestionController;
 import netherwulf.springframework.knowledgejar.exceptions.NotFoundException;
 import netherwulf.springframework.knowledgejar.models.ClosedQuestion;
+import netherwulf.springframework.knowledgejar.models.Statement;
 import netherwulf.springframework.knowledgejar.repositories.ClosedQuestionRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -40,6 +43,19 @@ public class ClosedQuestionServiceImpl implements ClosedQuestionService {
                         closedQuestionDTO.setSubchapterId(closedQuestion.getSubchapter().getId());
                     }
                     closedQuestionDTO.setClosedQuestionUrl(ClosedQuestionController.BASE_URL + "/" + closedQuestion.getId());
+                    Set<StatementDTO> statementDTOs = closedQuestionDTO.getStatements();
+                    for (StatementDTO statementDTO : statementDTOs) {
+                        Statement statement = closedQuestionRepository.findById(closedQuestionDTO.getId())
+                                .get()
+                                .getStatements()
+                                .stream()
+                                .filter(statementTemp -> statementTemp.getId().equals(statementDTO.getId()))
+                                .findFirst()
+                                .get();
+                        statementDTO.setIsCorrect(statement.getIsCorrect());
+                        statementDTO.setClosedQuestionId(closedQuestion.getId());
+                        statementDTO.setStatementUrl(ClosedQuestionController.BASE_URL + "/" + closedQuestion.getId() + "/" + "statements" + "/" + statement.getId());
+                    }
                     return closedQuestionDTO;
                 })
                 .collect(Collectors.toList());
@@ -61,6 +77,20 @@ public class ClosedQuestionServiceImpl implements ClosedQuestionService {
         }
         if (closedQuestionOptional.get().getSubchapter() != null) {
             closedQuestionDTO.setSubchapterId(closedQuestionOptional.get().getSubchapter().getId());
+        }
+        closedQuestionDTO.setClosedQuestionUrl(ClosedQuestionController.BASE_URL + "/" + id);
+        Set<StatementDTO> statementDTOs = closedQuestionDTO.getStatements();
+        for (StatementDTO statementDTO : statementDTOs) {
+            Statement statement = closedQuestionRepository.findById(closedQuestionDTO.getId())
+                    .get()
+                    .getStatements()
+                    .stream()
+                    .filter(statementTemp -> statementTemp.getId().equals(statementDTO.getId()))
+                    .findFirst()
+                    .get();
+            statementDTO.setIsCorrect(statement.getIsCorrect());
+            statementDTO.setClosedQuestionId(id);
+            statementDTO.setStatementUrl(ClosedQuestionController.BASE_URL + "/" + id + "/" + "statements" + "/" + statement.getId());
         }
         return closedQuestionDTO;
     }

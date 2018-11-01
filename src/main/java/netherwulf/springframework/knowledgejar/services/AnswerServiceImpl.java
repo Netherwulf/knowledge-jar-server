@@ -7,6 +7,7 @@ import netherwulf.springframework.knowledgejar.api.v1.model.AnswerListDTO;
 import netherwulf.springframework.knowledgejar.controllers.AnswerController;
 import netherwulf.springframework.knowledgejar.models.Answer;
 import netherwulf.springframework.knowledgejar.models.ClosedQuestion;
+import netherwulf.springframework.knowledgejar.models.Statement;
 import netherwulf.springframework.knowledgejar.models.Student;
 import netherwulf.springframework.knowledgejar.repositories.ClosedQuestionRepository;
 import netherwulf.springframework.knowledgejar.repositories.OpenQuestionRepository;
@@ -107,11 +108,11 @@ public class AnswerServiceImpl implements AnswerService {
     }
 
     @Override
-    public AnswerDTO saveAndReturnDTO(AnswerDTO answerDTO) {
-        Optional<Student> studentOptional = studentRepository.findById(answerDTO.getStudentId());
+    public AnswerDTO saveAndReturnDTO(Long id, AnswerDTO answerDTO) {
+        Optional<Student> studentOptional = studentRepository.findById(id);
 
         if (!studentOptional.isPresent()) {
-            log.error("Student not found for id: " + answerDTO.getStudentId());
+            log.error("Student not found for id: " + id);
             return new AnswerDTO();
         } else {
             Student student = studentOptional.get();
@@ -143,11 +144,45 @@ public class AnswerServiceImpl implements AnswerService {
                                     .findFirst()
                                     .get()
                     );
+                    for (ClosedQuestion closedQuestion : closedQuestionRepository.findAll()) {
+                        Set<Statement> statements = closedQuestion.getStatements();
+                        Boolean statementFound = statements.stream()
+                                .anyMatch(statementTemp -> statementTemp.getId().equals(answerDTO.getStatementId()));
+                        if (statementFound) {
+                            answerDTO.setClosedQuestionId(closedQuestion.getId());
+                        }
+                    }
                 }
             } else {
                 //add new answer
                 Answer answer = answerMapper.answerDTOToAnswer(answerDTO);
                 answer.setStudent(student);
+                answer.setCorrect(answerDTO.getIsCorrect());
+                if (answerDTO.getOpenQuestionId() != null) {
+                    answer.setOpenQuestion(openQuestionRepository.findById(answerDTO.getOpenQuestionId()).get());
+                }
+
+                if (answerDTO.getStatementId() != null) {
+                    answer.setStatement(
+                            closedQuestionRepository
+                                    .findAll()
+                                    .stream()
+                                    .map(ClosedQuestion::getStatements)
+                                    .flatMap(Set::stream)
+                                    .filter(statement -> statement.getId().equals(answerDTO.getStatementId()))
+                                    .findFirst()
+                                    .get()
+                    );
+                    for (ClosedQuestion closedQuestion : closedQuestionRepository.findAll()) {
+                        Set<Statement> statements = closedQuestion.getStatements();
+                        Boolean statementFound = statements.stream()
+                                .anyMatch(statementTemp -> statementTemp.getId().equals(answer.getStatement().getId()));
+                        if (statementFound) {
+                            answerDTO.setClosedQuestionId(closedQuestion.getId());
+                        }
+                    }
+                }
+                answer.setCorrect(answerDTO.getIsCorrect());
                 student.addAnswer(answer);
             }
 
@@ -167,17 +202,19 @@ public class AnswerServiceImpl implements AnswerService {
                         .filter(answer -> answer.getCorrect().equals(answerDTO.getIsCorrect()))
                         .filter(answer -> answer.getReplyDate().equals(answerDTO.getReplyDate()))
                         .filter(answer -> answer.getStudent().equals(student))
-                        .filter(answer -> answer.getOpenQuestion().equals(openQuestionRepository.findById(answerDTO.getOpenQuestionId()).get()))
-                        .filter(answer -> answer.getStatement()
-                                .equals(closedQuestionRepository
-                                        .findAll()
-                                        .stream()
-                                        .map(ClosedQuestion::getStatements)
-                                        .flatMap(Set::stream)
-                                        .filter(statement -> statement.getId().equals(answerDTO.getStatementId()))
-                                        .findFirst()
-                                        .get()
-                                )
+                        .filter(answer -> answerDTO.getOpenQuestionId() == null ||
+                                answer.getOpenQuestion().equals(openQuestionRepository.findById(answerDTO.getOpenQuestionId()).get()))
+                        .filter(answer -> answerDTO.getStatementId() == null ||
+                                answer.getStatement()
+                                        .equals(closedQuestionRepository
+                                            .findAll()
+                                            .stream()
+                                            .map(ClosedQuestion::getStatements)
+                                            .flatMap(Set::stream)
+                                            .filter(statement -> statement.getId().equals(answerDTO.getStatementId()))
+                                            .findFirst()
+                                            .get()
+                                        )
                         )
                         .findFirst();
             }
@@ -194,9 +231,23 @@ public class AnswerServiceImpl implements AnswerService {
                 savedAnswerDTO.setStatementId(savedAnswer.getStatement().getId());
             }
 
-            answerDTO.setAnswerUrl(AnswerController.BASE_URL + "/" + student.getId() + "/" + "answers" + "/" + savedAnswer.getId());
+            savedAnswerDTO.setIsCorrect(savedAnswer.getCorrect());
+            savedAnswerDTO.setAnswerUrl(AnswerController.BASE_URL + "/" + student.getId() + "/" + "answers" + "/" + savedAnswer.getId());
 
             return savedAnswerDTO;
         }
+    }
+
+    @Override
+    public void deleteByStudentIdAndAnswerId(Long studentId, Long answerId) {
+        Student student = studentRepository.findById(studentId).get();
+        Answer answerToDelete = student.getAnswers()
+                .stream()
+                .filter(answer -> answer.getId().equals(answerId))
+                .findFirst()
+                .get();
+        answerToDelete.setStudent(null);
+        student.getAnswers().removeIf(answer -> answer.getId().equals(answerId));
+        studentRepository.save(student);
     }
 }

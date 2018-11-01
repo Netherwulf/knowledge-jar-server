@@ -10,6 +10,8 @@ public interface AnswerService {
 
     AnswerDTO getByStudentIdAndAnswerId(Long studentId, Long answerId);
 
-    AnswerDTO saveAndReturnDTO(AnswerDTO chapter);
+    AnswerDTO saveAndReturnDTO(Long id, AnswerDTO chapter);
+
+    void deleteByStudentIdAndAnswerId(Long studentId, Long answerId);
 
 }

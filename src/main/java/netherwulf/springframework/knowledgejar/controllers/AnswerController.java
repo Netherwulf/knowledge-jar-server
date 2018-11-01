@@ -31,14 +31,20 @@ public class AnswerController {
 
     @PostMapping("/{id}/answers")
     @ResponseStatus(HttpStatus.CREATED)
-    public AnswerDTO createNewAnswer(@RequestBody AnswerDTO answerDTO) {
-        return answerService.saveAndReturnDTO(answerDTO);
+    public AnswerDTO createNewAnswer(@PathVariable Long id, @RequestBody AnswerDTO answerDTO) {
+        return answerService.saveAndReturnDTO(id, answerDTO);
     }
 
     @PutMapping("/{id}/answers")
     @ResponseStatus(HttpStatus.OK)
-    public AnswerDTO updateAnswer(@RequestBody AnswerDTO answerDTO) {
-        return answerService.saveAndReturnDTO(answerDTO);
+    public AnswerDTO updateAnswer(@PathVariable Long id, @RequestBody AnswerDTO answerDTO) {
+        return answerService.saveAndReturnDTO(id, answerDTO);
+    }
+
+    @DeleteMapping("/{studentId}/answers/{answerId}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteStudent(@PathVariable Long studentId, @PathVariable Long answerId) {
+        answerService.deleteByStudentIdAndAnswerId(studentId, answerId);
     }
 
 }
