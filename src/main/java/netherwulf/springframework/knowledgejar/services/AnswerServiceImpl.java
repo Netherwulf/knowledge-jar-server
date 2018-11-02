@@ -2,6 +2,9 @@ package netherwulf.springframework.knowledgejar.services;
 
 import lombok.extern.slf4j.Slf4j;
 import netherwulf.springframework.knowledgejar.api.v1.mapper.AnswerMapper;
+import netherwulf.springframework.knowledgejar.api.v1.mapper.ClosedQuestionMapper;
+import netherwulf.springframework.knowledgejar.api.v1.mapper.OpenQuestionMapper;
+import netherwulf.springframework.knowledgejar.api.v1.mapper.StatementMapper;
 import netherwulf.springframework.knowledgejar.api.v1.model.AnswerDTO;
 import netherwulf.springframework.knowledgejar.api.v1.model.AnswerListDTO;
 import netherwulf.springframework.knowledgejar.controllers.AnswerController;
@@ -27,15 +30,24 @@ public class AnswerServiceImpl implements AnswerService {
     private final OpenQuestionRepository openQuestionRepository;
     private final ClosedQuestionRepository closedQuestionRepository;
     private final AnswerMapper answerMapper;
+    private final StatementMapper statementMapper;
+    private final ClosedQuestionMapper closedQuestionMapper;
+    private final OpenQuestionMapper openQuestionMapper;
 
     public AnswerServiceImpl(StudentRepository studentRepository,
                              OpenQuestionRepository openQuestionRepository,
                              ClosedQuestionRepository closedQuestionRepository,
-                             AnswerMapper answerMapper) {
+                             AnswerMapper answerMapper,
+                             StatementMapper statementMapper,
+                             ClosedQuestionMapper closedQuestionMapper,
+                             OpenQuestionMapper openQuestionMapper) {
         this.studentRepository = studentRepository;
         this.openQuestionRepository = openQuestionRepository;
         this.closedQuestionRepository = closedQuestionRepository;
         this.answerMapper = answerMapper;
+        this.statementMapper = statementMapper;
+        this.closedQuestionMapper = closedQuestionMapper;
+        this.openQuestionMapper = openQuestionMapper;
     }
 
     @Override
@@ -54,10 +66,10 @@ public class AnswerServiceImpl implements AnswerService {
                 .map(answer -> {
                     AnswerDTO answerDTO = answerMapper.answerToAnswerDTO(answer);
                     if (answer.getOpenQuestion() != null) {
-                        answerDTO.setOpenQuestionId(answer.getOpenQuestion().getId());
+                        answerDTO.setOpenQuestion(openQuestionMapper.openQuestionToOpenQuestionDTO(answer.getOpenQuestion()));
                     }
                     if (answer.getStatement() != null) {
-                        answerDTO.setStatementId(answer.getStatement().getId());
+                        answerDTO.setStatement(statementMapper.statementToStatementDTO(answer.getStatement()));
                     }
                     answerDTO.setIsCorrect(answer.getCorrect());
                     answerDTO.setStudentId(answer.getStudent().getId());
@@ -95,11 +107,11 @@ public class AnswerServiceImpl implements AnswerService {
         answerDTO.setStudentId(answer.getStudent().getId());
 
         if (answer.getOpenQuestion() != null) {
-            answerDTO.setOpenQuestionId(answer.getOpenQuestion().getId());
+            answerDTO.setOpenQuestion(openQuestionMapper.openQuestionToOpenQuestionDTO(answer.getOpenQuestion()));
         }
 
         if (answer.getStatement() != null) {
-            answerDTO.setStatementId(answer.getStatement().getId());
+            answerDTO.setStatement(statementMapper.statementToStatementDTO(answer.getStatement()));
         }
 
         answerDTO.setAnswerUrl(AnswerController.BASE_URL + "/" + student.getId() + "/" + "answers" + "/" + answer.getId());
@@ -130,26 +142,26 @@ public class AnswerServiceImpl implements AnswerService {
                 answerFound.setCorrect(answerDTO.getIsCorrect());
                 answerFound.setReplyDate(answerDTO.getReplyDate());
                 answerFound.setStudent(student);
-                if (answerDTO.getOpenQuestionId() != null) {
-                    answerFound.setOpenQuestion(openQuestionRepository.findById(answerDTO.getOpenQuestionId()).get());
+                if (answerDTO.getOpenQuestion() != null) {
+                    answerFound.setOpenQuestion(openQuestionRepository.findById(answerDTO.getOpenQuestion().getId()).get());
                 }
-                if (answerDTO.getStatementId() != null) {
+                if (answerDTO.getStatement() != null) {
                     answerFound.setStatement(
                             closedQuestionRepository
                                     .findAll()
                                     .stream()
                                     .map(ClosedQuestion::getStatements)
                                     .flatMap(Set::stream)
-                                    .filter(statement -> statement.getId().equals(answerDTO.getStatementId()))
+                                    .filter(statement -> statement.getId().equals(answerDTO.getStatement().getId()))
                                     .findFirst()
                                     .get()
                     );
                     for (ClosedQuestion closedQuestion : closedQuestionRepository.findAll()) {
                         Set<Statement> statements = closedQuestion.getStatements();
                         Boolean statementFound = statements.stream()
-                                .anyMatch(statementTemp -> statementTemp.getId().equals(answerDTO.getStatementId()));
+                                .anyMatch(statementTemp -> statementTemp.getId().equals(answerDTO.getStatement().getId()));
                         if (statementFound) {
-                            answerDTO.setClosedQuestionId(closedQuestion.getId());
+                            answerDTO.setClosedQuestion(closedQuestionMapper.closedQuestionToClosedQuestionDTO(closedQuestion));
                         }
                     }
                 }
@@ -158,18 +170,18 @@ public class AnswerServiceImpl implements AnswerService {
                 Answer answer = answerMapper.answerDTOToAnswer(answerDTO);
                 answer.setStudent(student);
                 answer.setCorrect(answerDTO.getIsCorrect());
-                if (answerDTO.getOpenQuestionId() != null) {
-                    answer.setOpenQuestion(openQuestionRepository.findById(answerDTO.getOpenQuestionId()).get());
+                if (answerDTO.getOpenQuestion() != null) {
+                    answer.setOpenQuestion(openQuestionRepository.findById(answerDTO.getOpenQuestion().getId()).get());
                 }
 
-                if (answerDTO.getStatementId() != null) {
+                if (answerDTO.getStatement() != null) {
                     answer.setStatement(
                             closedQuestionRepository
                                     .findAll()
                                     .stream()
                                     .map(ClosedQuestion::getStatements)
                                     .flatMap(Set::stream)
-                                    .filter(statement -> statement.getId().equals(answerDTO.getStatementId()))
+                                    .filter(statement -> statement.getId().equals(answerDTO.getStatement().getId()))
                                     .findFirst()
                                     .get()
                     );
@@ -178,7 +190,7 @@ public class AnswerServiceImpl implements AnswerService {
                         Boolean statementFound = statements.stream()
                                 .anyMatch(statementTemp -> statementTemp.getId().equals(answer.getStatement().getId()));
                         if (statementFound) {
-                            answerDTO.setClosedQuestionId(closedQuestion.getId());
+                            answerDTO.setClosedQuestion(closedQuestionMapper.closedQuestionToClosedQuestionDTO(closedQuestion));
                         }
                     }
                 }
@@ -202,16 +214,16 @@ public class AnswerServiceImpl implements AnswerService {
                         .filter(answer -> answer.getCorrect().equals(answerDTO.getIsCorrect()))
                         .filter(answer -> answer.getReplyDate().equals(answerDTO.getReplyDate()))
                         .filter(answer -> answer.getStudent().equals(student))
-                        .filter(answer -> answerDTO.getOpenQuestionId() == null ||
-                                answer.getOpenQuestion().equals(openQuestionRepository.findById(answerDTO.getOpenQuestionId()).get()))
-                        .filter(answer -> answerDTO.getStatementId() == null ||
+                        .filter(answer -> answerDTO.getOpenQuestion() == null ||
+                                answer.getOpenQuestion().equals(openQuestionRepository.findById(answerDTO.getOpenQuestion().getId()).get()))
+                        .filter(answer -> answerDTO.getStatement() == null ||
                                 answer.getStatement()
                                         .equals(closedQuestionRepository
                                             .findAll()
                                             .stream()
                                             .map(ClosedQuestion::getStatements)
                                             .flatMap(Set::stream)
-                                            .filter(statement -> statement.getId().equals(answerDTO.getStatementId()))
+                                            .filter(statement -> statement.getId().equals(answerDTO.getStatement().getId()))
                                             .findFirst()
                                             .get()
                                         )
@@ -224,11 +236,11 @@ public class AnswerServiceImpl implements AnswerService {
             savedAnswerDTO.setStudentId(savedAnswer.getStudent().getId());
 
             if (savedAnswer.getOpenQuestion() != null) {
-                savedAnswerDTO.setOpenQuestionId(savedAnswer.getOpenQuestion().getId());
+                savedAnswerDTO.setOpenQuestion(openQuestionMapper.openQuestionToOpenQuestionDTO(savedAnswer.getOpenQuestion()));
             }
 
             if (savedAnswer.getStatement() != null) {
-                savedAnswerDTO.setStatementId(savedAnswer.getStatement().getId());
+                savedAnswerDTO.setStatement(statementMapper.statementToStatementDTO(savedAnswer.getStatement()));
             }
 
             savedAnswerDTO.setIsCorrect(savedAnswer.getCorrect());

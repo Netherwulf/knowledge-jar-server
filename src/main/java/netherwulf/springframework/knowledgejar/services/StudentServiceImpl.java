@@ -1,6 +1,9 @@
 package netherwulf.springframework.knowledgejar.services;
 
 import lombok.extern.slf4j.Slf4j;
+import netherwulf.springframework.knowledgejar.api.v1.mapper.ClosedQuestionMapper;
+import netherwulf.springframework.knowledgejar.api.v1.mapper.OpenQuestionMapper;
+import netherwulf.springframework.knowledgejar.api.v1.mapper.StatementMapper;
 import netherwulf.springframework.knowledgejar.api.v1.mapper.StudentMapper;
 import netherwulf.springframework.knowledgejar.api.v1.model.AnswerDTO;
 import netherwulf.springframework.knowledgejar.api.v1.model.StudentDTO;
@@ -27,11 +30,22 @@ public class StudentServiceImpl implements StudentService{
     private final StudentMapper studentMapper;
     private final StudentRepository studentRepository;
     private final ClosedQuestionRepository closedQuestionRepository;
+    private final StatementMapper statementMapper;
+    private final ClosedQuestionMapper closedQuestionMapper;
+    private final OpenQuestionMapper openQuestionMapper;
 
-    public StudentServiceImpl(StudentMapper studentMapper, StudentRepository studentRepository, ClosedQuestionRepository closedQuestionRepository) {
+    public StudentServiceImpl(StudentMapper studentMapper,
+                              StudentRepository studentRepository,
+                              ClosedQuestionRepository closedQuestionRepository,
+                              StatementMapper statementMapper,
+                              ClosedQuestionMapper closedQuestionMapper,
+                              OpenQuestionMapper openQuestionMapper) {
         this.studentMapper = studentMapper;
         this.studentRepository = studentRepository;
         this.closedQuestionRepository = closedQuestionRepository;
+        this.statementMapper = statementMapper;
+        this.closedQuestionMapper = closedQuestionMapper;
+        this.openQuestionMapper = openQuestionMapper;
     }
 
     @Override
@@ -53,17 +67,17 @@ public class StudentServiceImpl implements StudentService{
                                 .findFirst()
                                 .get();
                         if (answer.getOpenQuestion() != null) {
-                            answerDTO.setOpenQuestionId(answer.getOpenQuestion().getId());
+                            answerDTO.setOpenQuestion(openQuestionMapper.openQuestionToOpenQuestionDTO(answer.getOpenQuestion()));
                         }
 
                         if (answer.getStatement() != null) {
-                            answerDTO.setStatementId(answer.getStatement().getId());
+                            answerDTO.setStatement(statementMapper.statementToStatementDTO(answer.getStatement()));
                             for (ClosedQuestion closedQuestion : closedQuestionRepository.findAll()) {
                                 Set<Statement> statements = closedQuestion.getStatements();
                                 Boolean statementFound = statements.stream()
                                         .anyMatch(statementTemp -> statementTemp.getId().equals(answer.getStatement().getId()));
                                 if (statementFound) {
-                                    answerDTO.setClosedQuestionId(closedQuestion.getId());
+                                    answerDTO.setClosedQuestion(closedQuestionMapper.closedQuestionToClosedQuestionDTO(closedQuestion));
                                 }
                             }
                         }
@@ -99,17 +113,17 @@ public class StudentServiceImpl implements StudentService{
                     .findFirst()
                     .get();
             if (answer.getOpenQuestion() != null) {
-                answerDTO.setOpenQuestionId(answer.getOpenQuestion().getId());
+                answerDTO.setOpenQuestion(openQuestionMapper.openQuestionToOpenQuestionDTO(answer.getOpenQuestion()));
             }
 
             if (answer.getStatement() != null) {
-                answerDTO.setStatementId(answer.getStatement().getId());
+                answerDTO.setStatement(statementMapper.statementToStatementDTO(answer.getStatement()));
                 for (ClosedQuestion closedQuestion : closedQuestionRepository.findAll()) {
                     Set<Statement> statements = closedQuestion.getStatements();
                     Boolean statementFound = statements.stream()
                             .anyMatch(statementTemp -> statementTemp.getId().equals(answer.getStatement().getId()));
                     if (statementFound) {
-                        answerDTO.setClosedQuestionId(closedQuestion.getId());
+                        answerDTO.setClosedQuestion(closedQuestionMapper.closedQuestionToClosedQuestionDTO(closedQuestion));
                     }
                 }
             }

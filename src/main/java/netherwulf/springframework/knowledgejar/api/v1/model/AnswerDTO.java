@@ -25,7 +25,7 @@ public class AnswerDTO {
 
     private Long studentId;
 
-    private Long openQuestionId;
-    private Long statementId;
-    private Long closedQuestionId;
+    private OpenQuestionDTO openQuestion;
+    private StatementDTO statement;
+    private ClosedQuestionDTO closedQuestion;
 }
