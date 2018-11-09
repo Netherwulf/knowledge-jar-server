@@ -48,7 +48,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         quizOneQuestionOne.setQuiz(quizOne);
         quizOneQuestionOne.setContent("Co zostanie wyświetlone na ekranie po wykonaniu poniższego fragmentu kodu?");
         quizOneQuestionOne.setCorrectAnswer("11");
-        quizOneQuestionOne.setCodeLink("Netherwulf/a8179340382f9234c967d7b88b6f2280");
+        quizOneQuestionOne.setCodeLink("assets/images/q1q1.PNG");
 
         // Quiz 1 Q 2 CQ 1
         ClosedQuestion quizOneQuestionTwo = new ClosedQuestion();
@@ -80,7 +80,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         quizOneQuestionThree.setQuiz(quizOne);
         quizOneQuestionThree.setContent("Co należy wpisać w miejsce oznaczone (###)?");
         quizOneQuestionThree.setCorrectAnswer("System");
-        quizOneQuestionThree.setCodeLink("Netherwulf/e741d1049d57768c4272ea9a72473bcf");
+        quizOneQuestionThree.setCodeLink("assets/images/q1q3.PNG");
 
         // chapter 1 subchapter 1
         Subchapter subchapterOne = new Subchapter();
@@ -127,7 +127,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         subchapterThree.setChapter(chapterOne);
         subchapterThree.setName("Podstawowe Operatory");
         subchapterThree.setContent("Java oferuje liczne operatory pozwalające na wykonywanie operacji matematycznych. Najbardziej podstawowymi operatorami jest operator dodawania (+), odejmowania (-), mnożenia (*) i dzielenia (/).");
-        subchapterThree.setCodeLink("Netherwulf/2770b677dfc352e6fed68f62ec1468d9");
+        subchapterThree.setCodeLink("assets/images/ch1sub3.PNG");
 
         // chapter 1 subchapter 3 question
         OpenQuestion chapterOneSubchapterThreeQuestion = new OpenQuestion();
@@ -187,7 +187,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         quizTwoQuestionThree.setQuiz(quizTwo);
         quizTwoQuestionThree.setContent("Co zostanie wyświetlone na ekranie po wykonaniu poniższego fragmentu kodu?");
         quizTwoQuestionThree.setCorrectAnswer("Niepełnoletni");
-        quizTwoQuestionThree.setCodeLink("Netherwulf/60a097ebcbc226a089083ab6bf60a4ca");
+        quizTwoQuestionThree.setCodeLink("assets/images/q2q3.PNG");
 
         // chapter 2 subchapter 1
         Subchapter ch2subchapterOne = new Subchapter();
@@ -220,7 +220,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         ch2subchapterTwo.setChapter(chapterTwo);
         ch2subchapterTwo.setName("Pętla for");
         ch2subchapterTwo.setContent("Pętla for jest bardzo użyteczna jeśli chcemy wykonać pewien fragment kodu określoną liczbę razy. Do jej konstrukcji wykorzystujemy słowo kluczowe for");
-        ch2subchapterTwo.setCodeLink("Netherwulf/14b1de4852e14585f47e204ae91d874f");
+        ch2subchapterTwo.setCodeLink("assets/images/ch2sub2.PNG");
 
         // chapter 2 subchapter 2 question
         OpenQuestion chapterTwoSubchapterTwoQuestion = new OpenQuestion();
@@ -235,7 +235,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         ch2subchapterThree.setChapter(chapterTwo);
         ch2subchapterThree.setName("Pętla while");
         ch2subchapterThree.setContent("Java oferuje również pętlę while, którą możemy skonstruować za pomocą słowa kluczowego while. Instrukcje zawarte wewnątrz tej pętli będą się wykonywać ponownie tylko jeśli warunek określony w nawiasie będzie prawdziwy.");
-        ch2subchapterThree.setCodeLink("Netherwulf/51dbbd042c5416ba4a17d703177d44ba");
+        ch2subchapterThree.setCodeLink("assets/images/ch2sub3.PNG");
 
         // chapter 2 subchapter 3 question
         OpenQuestion chapterTwoSubchapterThreeQuestion = new OpenQuestion();
@@ -263,7 +263,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         quizThree.getOpenQuestions().add(quizThreeQuestionOne);
         quizThreeQuestionOne.setQuiz(quizThree);
         quizThreeQuestionOne.setContent("Co zostanie wyświetlone na ekranie po wykonaniu poniższego fragmentu kodu?");
-        quizThreeQuestionOne.setCodeLink("Netherwulf/f6471db6d83607e7b00f116481b844ca");
+        quizThreeQuestionOne.setCodeLink("assets/images/q3q1.PNG");
         quizThreeQuestionOne.setCorrectAnswer("2");
 
         // Quiz 3 Q 2 OQ 3
@@ -272,7 +272,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         quizThreeQuestionTwo.setQuiz(quizThree);
         quizThreeQuestionTwo.setContent("Co zostanie wyświetlone na ekranie po wykonaniu poniższego fragmentu kodu?");
         quizThreeQuestionTwo.setCorrectAnswer("17");
-        quizThreeQuestionTwo.setCodeLink("Netherwulf/0fa802945ea3fdc1671bd843b77be22e");
+        quizThreeQuestionTwo.setCodeLink("assets/images/q3q2.PNG");
 
         // Quiz 3 Q 3 OQ 2
         OpenQuestion quizThreeQuestionThree = new OpenQuestion();
@@ -301,14 +301,14 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         ch3subchapterTwo.setChapter(chapterThree);
         ch3subchapterTwo.setName("Tablice wielowymiarowe");
         ch3subchapterTwo.setContent("Tablice mogą mieć wiele wymiarów. W tablicy dwuwymiarowej najpierw podajemy numer wiersza, a następnie numer kolumny.");
-        ch2subchapterTwo.setCodeLink("Netherwulf/42d2943d1a2dc267a7fff34f4d4669b2");
+        ch2subchapterTwo.setCodeLink("assets/images/ch3sub2.PNG");
 
         // chapter 3 subchapter 2 question
         OpenQuestion chapterThreeSubchapterTwoQuestion = new OpenQuestion();
         ch3subchapterTwo.setOpenQuestion(chapterThreeSubchapterTwoQuestion);
         chapterThreeSubchapterTwoQuestion.setSubchapter(ch3subchapterTwo);
         chapterThreeSubchapterTwoQuestion.setContent("Podaj co powinno być wpisane w miejsce (###), aby kod wyświetlił zawartość komórki z 4 wiersza i 6 kolumny tabeli.");
-        chapterThreeSubchapterTwoQuestion.setCodeLink("Netherwulf/8afc9ed9d13c2359e764b710ed17c217");
+        chapterThreeSubchapterTwoQuestion.setCodeLink("assets/images/ch3sub2q.PNG");
         chapterThreeSubchapterTwoQuestion.setCorrectAnswer("[3][5]");
 
         // ======================================================= Saving Chapter 3 =======================================================
@@ -330,7 +330,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         quizFour.getOpenQuestions().add(quizFourQuestionOne);
         quizFourQuestionOne.setQuiz(quizFour);
         quizFourQuestionOne.setContent("Co należy wpisać w miejsce symbolu (###), aby metoda calc() nie zwracała żadnej wartości?");
-        quizFourQuestionOne.setCodeLink("Netherwulf/44f30ca3f278f1416dc13113a284ecf7");
+        quizFourQuestionOne.setCodeLink("assets/images/q4q1.PNG");
         quizFourQuestionOne.setCorrectAnswer("void");
 
         // Quiz 4 Q 2 OQ 2
@@ -346,7 +346,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         quizFourQuestionThree.setQuiz(quizFour);
         quizFourQuestionThree.setContent("Co należy wpisać w miejsce symbolu (###), aby metoda calc() przyjmowała jeden argument typu int?");
         quizFourQuestionThree.setCorrectAnswer("int");
-        quizFourQuestionThree.setCodeLink("Netherwulf/12ff7ce4126542d849dc1c1a8912020a");
+        quizFourQuestionThree.setCodeLink("assets/images/q4q3.PNG");
 
         // Quiz 4 Q 4 OQ 4
         OpenQuestion quizFourQuestionFour = new OpenQuestion();
@@ -397,7 +397,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         ch4subchapterThree.setChapter(chapterFour);
         ch4subchapterThree.setName("Typ zwracany");
         ch4subchapterThree.setContent("W ciele metody możemy zwrócić wartość za pomocą słowa kluczowego return. Natomiast typ zwracany lub jego brak (void) zaznaczamy przy definicji metody.");
-        ch4subchapterThree.setCodeLink("Netherwulf/7c01492e58cdf460e976ff30a5c91baf");
+        ch4subchapterThree.setCodeLink("assets/images/ch4sub3.PNG");
 
         // chapter 4 subchapter 3 question
         OpenQuestion chapterFourSubchapterThreeQuestion = new OpenQuestion();
@@ -412,7 +412,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         ch4subchapterFour.setChapter(chapterFour);
         ch4subchapterFour.setName("Dziedziczenie");
         ch4subchapterFour.setContent("Dziedziczenie umożliwia klasie uzyskać cechy (metody i pola) inne klasy. Dzięki temu dane mogą być bardziej uporządkowane i można nadać im hierarchię podobną do rzeczywistej.");
-        ch4subchapterFour.setCodeLink("Netherwulf/6c025e81f5a6331dcd1fd6de72170f30");
+        ch4subchapterFour.setCodeLink("assets/images/ch4sub4.PNG");
 
         // chapter 4 subchapter 4 question
         OpenQuestion chapterFourSubchapterFourQuestion = new OpenQuestion();
@@ -420,7 +420,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         chapterFourSubchapterFourQuestion.setSubchapter(ch4subchapterFour);
         chapterFourSubchapterFourQuestion.setContent("Co należy wpisać w miejsce symbolu (###), aby klasa Dog dziedziczyła po klasie Animal?");
         chapterFourSubchapterFourQuestion.setCorrectAnswer("extends");
-        chapterFourSubchapterFourQuestion.setCodeLink("Netherwulf/d9f820d458e164910c4df85b7596a33a");
+        chapterFourSubchapterFourQuestion.setCodeLink("assets/images/ch4sub4q.PNG");
 
         // chapter 4 subchapter 5
         Subchapter ch4subchapterFive = new Subchapter();
@@ -428,7 +428,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         ch4subchapterFive.setChapter(chapterFour);
         ch4subchapterFive.setName("Klasa Abstrakcyjna");
         ch4subchapterFive.setContent("Klasa abstrakcyjna służy do skupienia ogólnych cech (metod i pół) grupy różnych klas. Nie można utworzyć obiektu tej klasy, ale można po niej dziedziczyć. Pozwala to bardziej uporządkować zależności między klasami w programie.");
-        ch4subchapterFive.setCodeLink("Netherwulf/249b620836543fe53919593e34f8ba70");
+        ch4subchapterFive.setCodeLink("assets/images/ch4sub5.PNG");
 
         // chapter 4 subchapter 5 question
         ClosedQuestion chapterFourSubchapterFiveQuestion = new ClosedQuestion();
@@ -454,7 +454,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         ch4subchapterSix.setChapter(chapterFour);
         ch4subchapterSix.setName("Interfejs");
         ch4subchapterSix.setContent("Interfejs pozwala skupić ogólne cechy (metody) grupy różnych klas. Nie można utworzyć obiektu interfejsu, ale jedna klasa może implementować wiele interfejsów. Pozwala to zagwarantować obecność pewnych metod w klasach implementujących dany interfejs.");
-        ch4subchapterSix.setCodeLink("Netherwulf/7dc789c715a95015cae05242a84a777b");
+        ch4subchapterSix.setCodeLink("assets/images/ch4sub6.PNG");
 
         // chapter 4 subchapter 6 question
         ClosedQuestion chapterFourSubchapterSixQuestion = new ClosedQuestion();
@@ -493,7 +493,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         quizFive.getOpenQuestions().add(quizFiveQuestionOne);
         quizFiveQuestionOne.setQuiz(quizFive);
         quizFiveQuestionOne.setContent("Co należy wpisać w miejsce symbolu (###), aby zareagować na wszystkie możliwe wyjątki?");
-        quizFiveQuestionOne.setCodeLink("Netherwulf/b9e0642afa11629ada784e59a5f0a19c");
+        quizFiveQuestionOne.setCodeLink("assets/images/q5q1.PNG");
         quizFiveQuestionOne.setCorrectAnswer("catch");
 
         // chapter 5 subchapter 1
@@ -502,7 +502,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         ch5subchapterOne.setChapter(chapterFive);
         ch5subchapterOne.setName("Wyjątek");
         ch5subchapterOne.setContent("Wyjątek to problem, który występuje podczas wykonywania programu. Wyjątki często powodują nieplanowanie zakończenie działania programu. Aby się im przeciwstawić, należy obudować fragment kodu mogący wywołać wyjątek blokiem try/catch.");
-        ch5subchapterOne.setCodeLink("Netherwulf/2d17f147c58978f757f25b02dd2e7765");
+        ch5subchapterOne.setCodeLink("assets/images/ch5sub1.PNG");
 
 
         // chapter 5 subchapter 1 question
