@@ -301,7 +301,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         ch3subchapterTwo.setChapter(chapterThree);
         ch3subchapterTwo.setName("Tablice wielowymiarowe");
         ch3subchapterTwo.setContent("Tablice mogą mieć wiele wymiarów. W tablicy dwuwymiarowej najpierw podajemy numer wiersza, a następnie numer kolumny.");
-        ch2subchapterTwo.setCodeLink("assets/images/ch3sub2.PNG");
+        ch3subchapterTwo.setCodeLink("assets/images/ch3sub2.PNG");
 
         // chapter 3 subchapter 2 question
         OpenQuestion chapterThreeSubchapterTwoQuestion = new OpenQuestion();
