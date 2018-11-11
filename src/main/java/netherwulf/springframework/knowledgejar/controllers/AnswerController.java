@@ -6,6 +6,7 @@ import netherwulf.springframework.knowledgejar.services.AnswerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping(AnswerController.BASE_URL)
 public class AnswerController {
