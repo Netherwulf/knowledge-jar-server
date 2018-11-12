@@ -19,6 +19,7 @@ import netherwulf.springframework.knowledgejar.repositories.StudentRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -57,7 +58,7 @@ public class StudentServiceImpl implements StudentService{
                 .map(student -> {
                     StudentDTO studentDTO = studentMapper.studentToStudentDTO(student);
                     studentDTO.setStudentUrl(StudentController.BASE_URL + "/" + student.getId());
-                    Set<AnswerDTO> answerDTOs = studentDTO.getAnswers();
+                    List<AnswerDTO> answerDTOs = studentDTO.getAnswers();
                     for (AnswerDTO answerDTO : answerDTOs) {
                         Answer answer = studentRepository.findById(studentDTO.getId())
                                 .get()
@@ -85,7 +86,11 @@ public class StudentServiceImpl implements StudentService{
                         answerDTO.setStudentId(student.getId());
                         answerDTO.setAnswerUrl(StudentController.BASE_URL + "/" + student.getId() + "/" + "answers" + "/" + answer.getId());
                     }
-                    studentDTO.setAnswers(answerDTOs);
+                    List<AnswerDTO> answers = answerDTOs
+                            .stream()
+                            .sorted(Comparator.comparing(AnswerDTO::getId))
+                            .collect(Collectors.toList());
+                    studentDTO.setAnswers(answers);
                     return studentDTO;
                 })
                 .collect(Collectors.toList());
@@ -103,7 +108,7 @@ public class StudentServiceImpl implements StudentService{
 
         StudentDTO studentDTO = studentMapper.studentToStudentDTO(studentOptional.get());
         studentDTO.setStudentUrl(StudentController.BASE_URL + "/" + id);
-        Set<AnswerDTO> answerDTOs = studentDTO.getAnswers();
+        List<AnswerDTO> answerDTOs = studentDTO.getAnswers();
         for (AnswerDTO answerDTO : answerDTOs) {
             Answer answer = studentRepository.findById(studentDTO.getId())
                     .get()

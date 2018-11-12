@@ -14,6 +14,7 @@ import netherwulf.springframework.knowledgejar.repositories.ClosedQuestionReposi
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -73,7 +74,7 @@ public class ChapterServiceImpl implements ChapterService {
                     }
                     chapterDTO.setQuiz(quizDTO);
 
-                    Set<SubchapterDTO> subchapterDTOs = chapterDTO.getSubchapters();
+                    List<SubchapterDTO> subchapterDTOs = chapterDTO.getSubchapters();
                     for (SubchapterDTO subchapterDTO : subchapterDTOs) {
                         subchapterDTO.setSubchapterUrl(ChapterController.BASE_URL + "/" + chapter.getId() + "/subchapters/" + subchapterDTO.getId());
                         subchapterDTO.setChapterId(chapterDTO.getId());
@@ -101,6 +102,7 @@ public class ChapterServiceImpl implements ChapterService {
                             openQuestionDTO.setSubchapterId(subchapterDTO.getId());
                         }
                     }
+                    subchapterDTOs.sort(Comparator.comparing(SubchapterDTO::getId));
                     chapterDTO.setSubchapters(subchapterDTOs);
                     return chapterDTO;
                 })
