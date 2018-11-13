@@ -535,10 +535,12 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         // initialization of list of chapters
         List<Student> studentList = new ArrayList<Student>();
 
+        // adding first student admin/admin to student list
+
         Student admin = new Student();
 
-        // adding first student admin/admin to student list
         studentList.add(admin);
+
         admin.setLogin("admin");
         admin.setPassword("admin");
         admin.setName("Jan");
@@ -554,6 +556,20 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         answer.setCorrect("true");
         answer.setReplyDate("31.10.2018");
         answer.setStatement(subchapterOneStatementTwo);
+
+        // adding second student test/test to student list
+
+        Student test = new Student();
+
+        studentList.add(test);
+
+        test.setLogin("test");
+        test.setPassword("test");
+        test.setName("Janusz");
+        test.setSurname("Kowalski");
+        test.setProgress(0);
+        test.setEmail("test@test.com");
+        test.setJoinDate("30.10.2018");
 
         // saving students to database
         studentRepository.saveAll(studentList);
