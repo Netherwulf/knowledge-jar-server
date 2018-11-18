@@ -102,7 +102,7 @@ public class ChapterServiceImpl implements ChapterService {
                             openQuestionDTO.setSubchapterId(subchapterDTO.getId());
                         }
                     }
-                    subchapterDTOs.sort(Comparator.comparing(SubchapterDTO::getId));
+                    subchapterDTOs.sort(Comparator.comparing(SubchapterDTO::getName));
                     chapterDTO.setSubchapters(subchapterDTOs);
                     return chapterDTO;
                 })
